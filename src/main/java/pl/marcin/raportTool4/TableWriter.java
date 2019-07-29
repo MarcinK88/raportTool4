@@ -1,6 +1,7 @@
 package pl.marcin.raportTool4;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -274,7 +275,12 @@ public class TableWriter {
             cell.setCellValue(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex -1).getMonth().name());
             cell = row.createCell(1);
             cell.setCellValue(convertedRepository.kpi2(Date.valueOf(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex -1).toString()),
-                    Date.valueOf(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex - 2).toString())));
+                    Date.valueOf(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex - 2)))/100);
+            CellStyle style = wb.createCellStyle();
+            style.setDataFormat(wb.createDataFormat().getFormat("0.0%"));
+            cell.setCellStyle(style);
+
+
         }
     }
 
