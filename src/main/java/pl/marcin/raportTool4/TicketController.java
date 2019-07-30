@@ -144,4 +144,9 @@ public class TicketController {
         return "converted";
     }
 
+    @GetMapping("/tickets")
+    public String tickets(){
+        return "/tickets";
+    }
+
 }

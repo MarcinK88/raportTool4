@@ -33,7 +33,7 @@ public class TableWriter {
         this.types = Arrays.asList("Other", "Domain mgmt", "IP mgmt", "SSL Certificate", "DNS");
         this.years = new ArrayList<>();
         this.months = Arrays.asList("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
-        for(int i = 2016; i <= LocalDate.now().getYear(); i++) {
+        for(int i = LocalDate.now().getYear(); i >= 2016; i--) {
             years.add(i);
         }
         this.ba = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
@@ -305,7 +305,9 @@ public class TableWriter {
     }
 
     public void saveToFile() throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream("C:\\Users\\10619730\\Desktop\\New folder\\test.xlsx")) {
+//        try (FileOutputStream fileOut = new FileOutputStream("C:\\Users\\10619730\\Desktop\\New folder\\test.xlsx")) {
+        try (FileOutputStream fileOut = new FileOutputStream("test.xlsx")) {
+
             wb.write(fileOut);
         }
     }
