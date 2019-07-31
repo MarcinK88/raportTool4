@@ -1,5 +1,6 @@
 package pl.marcin.raportTool4;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -24,6 +27,8 @@ import org.springframework.web.servlet.view.JstlView;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import javax.validation.Validator;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -49,6 +54,7 @@ public class WebApp implements WebMvcConfigurer {
         localeResolver.setDefaultLocale(new Locale("pl","PL"));
         return localeResolver;
     }
+
 
     //rejestracja filtru
 
