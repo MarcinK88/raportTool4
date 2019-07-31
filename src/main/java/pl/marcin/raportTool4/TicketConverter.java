@@ -1,5 +1,8 @@
 package pl.marcin.raportTool4;
 
+import pl.marcin.raportTool4.Models.Converted;
+import pl.marcin.raportTool4.Models.Ticket;
+
 import java.util.ArrayList;
 import java.util.List;
 

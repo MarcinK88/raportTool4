@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Models;
 
 import javax.persistence.*;
 import java.sql.Date;

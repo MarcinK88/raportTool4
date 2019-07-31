@@ -1,7 +1,8 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import pl.marcin.raportTool4.Models.Converted;
 
 import java.util.Date;
 import java.util.List;
