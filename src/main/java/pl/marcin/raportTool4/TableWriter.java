@@ -1,13 +1,18 @@
 package pl.marcin.raportTool4;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -34,7 +39,7 @@ public class TableWriter {
         this.types = Arrays.asList("Other", "Domain mgmt", "IP mgmt", "SSL Certificate", "DNS");
         this.years = new ArrayList<>();
         this.months = Arrays.asList("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
-        for(int i = 2016; i <= LocalDate.now().getYear(); i++) {
+        for(int i = LocalDate.now().getYear(); i >= 2016; i--) {
             years.add(i);
         }
         this.ba = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
@@ -310,10 +315,19 @@ public class TableWriter {
 
     }
 
-    public void saveToFile() throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream("C:\\Users\\10619730\\Desktop\\New folder\\test.xlsx")) {
+    public void saveToFile(HttpServletResponse resp) throws IOException, XMLStreamException {
+//        try (FileOutputStream fileOut = new FileOutputStream("C:\\Users\\10619730\\Desktop\\New folder\\test.xlsx")) {
+
+        resp.setContentType("text/xls");
+        resp.setHeader("Content-disposition", "attachment;filename=" + "a.xlsx");
+
+        try (OutputStream fileOut = resp.getOutputStream()) {
             wb.write(fileOut);
         }
+
+
+
+
     }
 
     public List<Integer> getYears() {
@@ -378,5 +392,9 @@ public class TableWriter {
 
     public void setCategory(List<String> category) {
         this.category = category;
+    }
+
+    public XSSFWorkbook getWb() {
+        return wb;
     }
 }

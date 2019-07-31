@@ -5,8 +5,7 @@ import java.util.List;
 
 public class TicketConverter {
 
-//    private List<Ticket> ticketsToConvert;
-//    private Ticket ticketToConvert;
+
 
     public static List<Converted> convertList(List<Ticket> ticketsToConvert) {
 
