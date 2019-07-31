@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -40,7 +42,7 @@ public class ChartController {
     }
 
     @PostMapping("/charttest")
-    public String charttestPost(@ModelAttribute TableWriter tableWriter) throws IOException, ParseException {
+    public String charttestPost(@ModelAttribute TableWriter tableWriter, HttpServletResponse response) throws IOException, ParseException, XMLStreamException {
 
         tableWriter.createOpenedPerMonth(convertedRepository);
         tableWriter.createRequestPerBa(convertedRepository);
@@ -49,7 +51,7 @@ public class ChartController {
         tableWriter.createKpi1(convertedRepository);
         tableWriter.createKpi2(convertedRepository);
         tableWriter.createKpi3(convertedRepository);
-        tableWriter.saveToFile();
+        tableWriter.saveToFile(response);
 
         return "charttest";
     }

@@ -34,14 +34,14 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "pl.marcin")
 public class WebApp implements WebMvcConfigurer {
 
-//    @Bean
-//    public ViewResolver internalResourceViewResolver(){
-//        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-//        bean.setViewClass(JstlView.class);
-//        bean.setPrefix("/WEB-INF/templates/");
-//        bean.setSuffix(".jsp");
-//        return bean;
-//    }
+    @Bean
+    public ViewResolver internalResourceViewResolver(){
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/templates/");
+        bean.setSuffix(".jsp");
+        return bean;
+    }
 
     @Bean(name="localeResolver")
     public LocaleContextResolver getLocaleContextResolver() {
