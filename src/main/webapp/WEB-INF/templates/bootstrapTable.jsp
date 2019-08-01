@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
@@ -7,8 +6,6 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
-
 
 </head>
 
@@ -21,7 +18,7 @@
     <div class="container">
 
         <h1>Bootstrap 3 SortTable</h1>
-        <table class="table responsive table-hover dataTable" id="sort">
+        <table class="table responsive table-hover" id="sort">
             <thead>
             <tr>
                 <th scope="col">Title</th>
