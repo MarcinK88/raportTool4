@@ -4,23 +4,39 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 
     <title>Title</title>
 </head>
 <body>
 
-<form:form cssClass="border border-light p-5" method="post" modelAttribute="user"  >
-    <p class="h4 mb-4 text-center">Sign in</p>
-    <form:hidden path="id" />
-    login: <form:input cssClass="form-control mb-4" path="login" />
-    password: <form:input cssClass="form-control mb-4" path="password" type="password" />
-    <button type="submit" value="login" class="btn btn-info btn-block my-4">Login</button>
+<form:form method="post" modelAttribute="user">
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 col-xs-12">
+            <div class="jumbotron">
+                <h1 class="text-center">Login Page</h1>
+                <br>
+                <div class="form-group">
+                    <form:label path="login" cssClass="control-table">Login</form:label>
+                    <form:input path="login" cssClass="form-control" />
+                </div>
+                <div class="form-group">
+                    <form:label path="password" cssClass="control-table">Password</form:label>
+                    <form:input path="password" cssClass="form-control" type="password" />
+                </div>
+                <br>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-outline-info">Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 </form:form>
+
+
 
 </body>
 </html>
