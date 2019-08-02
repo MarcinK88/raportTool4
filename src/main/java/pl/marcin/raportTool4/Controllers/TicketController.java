@@ -66,6 +66,8 @@ public class TicketController {
         ticketOwners.add("Marcin Kucharczyk");
         ticketOwners.add("Katarzyna Rytter");
         ticketOwners.add("Frank Witzer");
+        ticketOwners.add("");
+        ticketOwners.add("NULL");
         model.addAttribute("ticketOwners",ticketOwners);
 
         List<String> ba = new ArrayList<>();
@@ -75,6 +77,8 @@ public class TicketController {
         ba.add("IS");
         ba.add("MX");
         ba.add("SE");
+        ba.add("n.a");
+        ba.add("");
         model.addAttribute("ba",ba);
 
         List<String> region = new ArrayList<>();
@@ -82,6 +86,8 @@ public class TicketController {
         region.add("APAC");
         region.add("LATAM");
         region.add("NA");
+        region.add("NULL");
+        region.add("");
         model.addAttribute("region",region);
 
         List<String> requestType = new ArrayList<>();
