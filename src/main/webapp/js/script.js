@@ -36,3 +36,13 @@ function bs_input_file() {
 $(function() {
     bs_input_file();
 });
+
+function clearDate() {
+    var el = document.getElementById("clearDate");
+    var dateToClear = document.getElementById("closeDate");
+    if(dateToClear.disabled = true) {
+        dateToClear.enable();
+    } else {
+        dateToClear.disable();
+    }
+}

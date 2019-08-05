@@ -118,8 +118,9 @@ logged user: ${sessionScope.get("loggedUser")}<br>
         <div class="form-group">
             <label class="col-md-4 control-label" for="closeDate">Close date</label>
             <div class="col-md-4">
-<%--                <c:if test="${empty ticket.closeDate}"><c:set var="ticket.closeDate" value="aaaa"/> </c:if>--%>
-                <form:input path="closeDate" id="closeDate" name="closeDate" type="date" placeholder="Close date" class="form-control input-md"  />
+<%--                <c:if test="${empty ticket.closeDate}">${param.get{ticket} </c:if>--%>
+                <form:input path="closeDate" id="closeDate"  name="closeDate" type="date" placeholder="Close date" class="form-control input-md" />
+                <input type="checkbox" id="clearDate"> Clear date
             </div>
         </div>
 
@@ -127,7 +128,7 @@ logged user: ${sessionScope.get("loggedUser")}<br>
         <div class="form-group">
             <label class="col-md-4 control-label" for="closeCw">Close CW</label>
             <div class="col-md-4">
-                <form:input path="closeCw" id="closeCw" name="closeCw" type="text" placeholder="Close CW" class="form-control input-md" readonly="true" />
+                <form:input path="closeCw" id="closeCw" name="closeCw" type="text" placeholder="Close CW" class="form-control input-md"  />
             </div>
         </div>
 
@@ -135,7 +136,7 @@ logged user: ${sessionScope.get("loggedUser")}<br>
         <div class="form-group">
             <label class="col-md-4 control-label" for="closeMonth">Close month</label>
             <div class="col-md-4">
-                <form:input path="closeMonth" id="closeMonth" name="closeMonth" type="text" placeholder="Close month" class="form-control input-md" readonly="true" />
+                <form:input path="closeMonth" id="closeMonth" name="closeMonth" type="text" placeholder="Close month" class="form-control input-md" />
             </div>
         </div>
 
@@ -220,6 +221,6 @@ logged user: ${sessionScope.get("loggedUser")}<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/plug-ins/1.10.15/sorting/stringMonthYear.js"></script>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<script src="${context}/js/script.js"></script>
+<script src="${context}/js/cleardatescript.js"></script>
 </body>
 </html>
