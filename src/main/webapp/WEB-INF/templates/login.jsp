@@ -3,39 +3,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
     <title>Title</title>
 </head>
 <body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
 
-<form:form method="post" modelAttribute="user">
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 col-xs-12">
-            <div class="jumbotron">
-                <h1 class="text-center">Login Page</h1>
-                <br>
-                <div class="form-group">
-                    <form:label path="login" cssClass="control-table">Login</form:label>
-                    <form:input path="login" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <form:label path="password" cssClass="control-table">Password</form:label>
-                    <form:input path="password" cssClass="form-control" type="password" />
-                </div>
-                <br>
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-outline-info">Login</button>
-                </div>
-            </div>
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
         </div>
-        <div class="col-md-3"></div>
-    </div>
-</form:form>
 
+        <form:form method="post" modelAttribute="user">
+            <form:input path="login" id="login" cssClass="fadeIn second" placeholder="login" />
+            <form:password path="password" id="password" cssClass="fadeIn third" placeholder="password"  />
+            <input type="submit" class="fadeIn fourth" value="Login"/>
+        </form:form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
 
 
 </body>
