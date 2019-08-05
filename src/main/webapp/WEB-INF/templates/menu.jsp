@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap 4 Static Navbar with Dropdown and Search Form</title>
+<%--    <title>Bootstrap 4 Static Navbar with Dropdown and Search Form</title>--%>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,6 +14,7 @@
             margin: 20px;
         }
     </style>
+
 </head>
 <body>
 <div class="bs-example">
@@ -28,7 +29,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tickets</a>
                     <div class="dropdown-menu">
-                        <a href="/tickets" class="dropdown-item">All tickets</a>
+                        <a href="/converted" class="dropdown-item">All tickets</a>
                         <a href="/opentickets" class="dropdown-item">Opened tickets</a>
                     </div>
                 </div>
@@ -36,10 +37,10 @@
                 <a href="/importlist" class="nav-item nav-link">Import file</a>
             </div>
             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link">Login</a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.get("loggedUser")}</a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-info">
+                    <a href="/logout" class="dropdown-item">Logout</a>
+                </div>
             </div>
         </div>
     </nav>
-</div>
-</body>
-</html>

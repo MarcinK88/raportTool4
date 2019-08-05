@@ -1,3 +1,5 @@
+<jsp:include page="menu.jsp"/>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,8 +16,7 @@
 
 </head>
 <body>
-logged user: ${sessionScope.get("loggedUser")}<br>
-<a href="/">Homepage</a>
+
 
 
 
