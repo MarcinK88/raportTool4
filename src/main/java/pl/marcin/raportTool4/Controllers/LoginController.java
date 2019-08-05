@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.marcin.raportTool4.Models.User;
 import pl.marcin.raportTool4.Repositories.UserRepository;
 
@@ -38,8 +39,16 @@ public class LoginController {
         } else {
             return "wrongpassword";
         }
-
-
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("loggedUser");
+
+        return "redirect:/";
+    }
+
 
 }

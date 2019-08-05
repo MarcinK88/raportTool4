@@ -1,8 +1,10 @@
 package pl.marcin.raportTool4.Models;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.sql.Date;
 
 @Entity
@@ -34,7 +36,6 @@ public class Converted {
     @Column(name = "`Open month`")
     private String openMonth;
     @Column(name = "`Close date`")
-    @Nullable
     private Date closeDate;
     @Column(name = "`Close CW`")
     private Integer closeCw;
@@ -78,6 +79,7 @@ public class Converted {
         this.providerRefNo = providerRefNo;
         this.requester = requester;
         this.comments = comments;
+
     }
 
     public long getId() {

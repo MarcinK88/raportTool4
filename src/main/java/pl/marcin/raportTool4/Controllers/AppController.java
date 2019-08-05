@@ -28,7 +28,11 @@ public class AppController {
         return "homepage";
     }
 
+    @GetMapping("/bootstrap")
+    public String testpage() {
 
+        return "bootstrap";
+    }
 
     @GetMapping("/importlist")
     public String importFile(Model model){

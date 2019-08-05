@@ -1,17 +1,23 @@
 package pl.marcin.raportTool4.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.marcin.raportTool4.DateConverter;
 import pl.marcin.raportTool4.Models.Converted;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
 import pl.marcin.raportTool4.Models.Ticket;
 import pl.marcin.raportTool4.Repositories.TicketRepository;
 
+import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +66,8 @@ public class TicketController {
         ticketOwners.add("Marcin Kucharczyk");
         ticketOwners.add("Katarzyna Rytter");
         ticketOwners.add("Frank Witzer");
+        ticketOwners.add("");
+        ticketOwners.add("NULL");
         model.addAttribute("ticketOwners",ticketOwners);
 
         List<String> ba = new ArrayList<>();
@@ -69,6 +77,8 @@ public class TicketController {
         ba.add("IS");
         ba.add("MX");
         ba.add("SE");
+        ba.add("n.a");
+        ba.add("");
         model.addAttribute("ba",ba);
 
         List<String> region = new ArrayList<>();
@@ -76,6 +86,8 @@ public class TicketController {
         region.add("APAC");
         region.add("LATAM");
         region.add("NA");
+        region.add("NULL");
+        region.add("");
         model.addAttribute("region",region);
 
         List<String> requestType = new ArrayList<>();
@@ -107,7 +119,6 @@ public class TicketController {
             }
         }
 
-        ticket.setCloseDate(null);
         convertedRepository.save(ticket);
         return "redirect:/converted";
     }
