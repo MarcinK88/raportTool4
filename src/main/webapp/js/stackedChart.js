@@ -23,27 +23,107 @@ var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
 //         }]
 // };
 //
-// //wykres liniowy
-// if (chLine) {
-//     new Chart(chLine, {
-//         type: 'line',
-//         data: chartData,
-//         options: {
-//             scales: {
-//                 xAxes: [{
-//                     ticks: {
-//                         beginAtZero: false
-//                     }
-//                 }]
-//             },
-//             legend: {
-//                 display: false
-//             },
-//             responsive: true
-//         }
-//     });
-// }
-//
+// Requests per BA
+var reqperba = document.getElementById("reqperba");
+var reqperbatab = document.getElementById("reqperbatab");
+console.log(reqperbatab.rows[0].cells.length);
+// Go through cells
+for (var i = 1; i < reqperbatab.rows.length; i++) {
+    var reqperbatabRow = reqperbatab.rows[i];
+    var coData = {};
+    var isData = {};
+    var mxData = {};
+    var seData = {};
+    var etData = {};
+    var ctData = {};
+    var reqperbaLabels = {};
+    for (var j = 1; j < reqperbatab.rows[0].cells.length; j++) {
+        reqperbaLabels[j-1] = reqperbatab.rows[0].cells[j].innerHTML;
+        coData[j-1] = reqperbatab.rows[1].cells[j].innerHTML;
+        isData[j-1] = reqperbatab.rows[2].cells[j].innerHTML;
+        mxData[j-1] = reqperbatab.rows[3].cells[j].innerHTML;
+        seData[j-1] = reqperbatab.rows[4].cells[j].innerHTML;
+        etData[j-1] = reqperbatab.rows[5].cells[j].innerHTML;
+        ctData[j-1] = reqperbatab.rows[6].cells[j].innerHTML;
+    }
+
+
+}
+
+if (reqperba) {
+
+    var valuesCo = Object.values(coData).map(Number);
+    var valuesIs = Object.values(isData).map(Number);
+    var valuesMx = Object.values(mxData).map(Number);
+    var valuesSe = Object.values(seData).map(Number);
+    var valuesEt = Object.values(etData).map(Number);
+    var valuesCt = Object.values(ctData).map(Number);
+    var reqperbaValuesLabels = Object.values(reqperbaLabels);
+
+
+
+    new Chart(reqperba, {
+        type: 'bar',
+        data: {
+            labels: reqperbaValuesLabels,
+            datasets: [{
+                label: 'CO',
+                data: valuesCo,
+                backgroundColor: colors[0]
+            },
+                {
+                    label: 'IS',
+                    data: valuesIs,
+                    backgroundColor: colors[1]
+                },
+                {
+                    label: 'MX',
+                    data: valuesMx,
+                    backgroundColor: colors[2]
+                },
+                {
+                    label: 'SE',
+                    data: valuesSe,
+                    backgroundColor: colors[3]
+                },
+                {
+                    label: 'ET',
+                    data: valuesEt,
+                    backgroundColor: colors[4]
+                },
+                {
+                    label: 'CT',
+                    data: valuesCt,
+                    backgroundColor: colors[5]
+                }
+
+            ]
+        },
+        options: {
+            legend: {
+                display: true,
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Number of opened Requests per BA',
+                fontSize: 18,
+                fontStyle: 'bold'
+            },
+            scales: {
+                xAxes: [{
+                    barPercentage: 1,
+                    categoryPercentage: 0.5,
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+}
+
 // /* large pie/donut chart */
 // var chPie = document.getElementById("chPie");
 // if (chPie) {
@@ -95,13 +175,13 @@ for (var i = 1; i < table.rows.length; i++) {
     var domainData = {};
     var otherData = {};
     var labels = {};
-    for (var i = 1; i < table.rows[0].cells.length; i++) {
-        labels[i-1] = table.rows[0].cells[i].innerHTML;
-        otherData[i-1] = table.rows[1].cells[i].innerHTML;
-        domainData[i-1] = table.rows[2].cells[i].innerHTML;
-        ipData[i-1] = table.rows[3].cells[i].innerHTML;
-        sslData[i-1] = table.rows[4].cells[i].innerHTML;
-        dnsData[i-1] = table.rows[5].cells[i].innerHTML;
+    for (var j = 1; j < table.rows[0].cells.length; j++) {
+        labels[j-1] = table.rows[0].cells[j].innerHTML;
+        otherData[j-1] = table.rows[1].cells[j].innerHTML;
+        domainData[j-1] = table.rows[2].cells[j].innerHTML;
+        ipData[j-1] = table.rows[3].cells[j].innerHTML;
+        sslData[j-1] = table.rows[4].cells[j].innerHTML;
+        dnsData[j-1] = table.rows[5].cells[j].innerHTML;
     }
 
 
@@ -160,7 +240,7 @@ if (chBar) {
             },
             title: {
                 display: true,
-                text: 'Tickets opened per month',
+                text: 'Opened Requests per month per type',
                 fontSize: 18,
                 fontStyle: 'bold'
             },

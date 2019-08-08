@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.marcin.raportTool4.Models.MonthDatas;
 import pl.marcin.raportTool4.Models.OpenedPerMonth;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
 import pl.marcin.raportTool4.TableWriter;
@@ -61,8 +62,15 @@ public class ChartController {
         model.addAttribute("selectedMonth", tableWriter.getSelectedMonth());
         model.addAttribute("selectedYear", tableWriter.getSelectedYear());
 
-        System.out.println("tablewriter post charttest: " + tableWriter.getSelectedMonth());
-
+        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository);
+        model.addAttribute("sortedThreeMonths", monthDatas.getSortedMonths());
+        model.addAttribute("ba", monthDatas.getBas());
+        model.addAttribute("coDatas", monthDatas.getCoDatas());
+        model.addAttribute("isDatas", monthDatas.getIsDatas());
+        model.addAttribute("mxDatas", monthDatas.getMxDatas());
+        model.addAttribute("seDatas", monthDatas.getSeDatas());
+        model.addAttribute("etDatas", monthDatas.getEtDatas());
+        model.addAttribute("ctDatas", monthDatas.getCtDatas());
         return "monthlyreport";
     }
 

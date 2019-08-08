@@ -70,10 +70,61 @@
                 </div>
             </div>
         </div>
+
+<%--        request per BA table--%>
         <div class="col-md-6 py-1">
             <div class="card">
                 <div class="card-body">
-                    <canvas id="chLine"></canvas>
+                    <canvas id="reqperba"></canvas>
+                    <table class="table" id="reqperbatab" style="display:none">
+                        <thead>
+                            <th></th>
+                            <c:forEach items="${sortedThreeMonths}" var="month">
+                                <th>${month}</th>
+                            </c:forEach>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>CO</td>
+                            <c:forEach items="${coDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>IS</td>
+                            <c:forEach items="${isDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>MX</td>
+                            <c:forEach items="${mxDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>SE</td>
+                            <c:forEach items="${seDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>ET</td>
+                            <c:forEach items="${etDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>CT</td>
+                            <c:forEach items="${ctDatas}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                        </tbody>
+
+
+
+                    </table>
                 </div>
             </div>
         </div>

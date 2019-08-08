@@ -70,7 +70,6 @@ public class OpenedPerMonth {
             years.add(i);
         }
         this.types = Arrays.asList("Other", "Domain mgmt", "IP mgmt", "SSL Certificate", "DNS");
-        this.selectedMonthIndex = 4;
     }
 
     public List<String> getTypes() {
