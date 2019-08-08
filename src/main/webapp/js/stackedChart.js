@@ -26,7 +26,7 @@ var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
 // Requests per BA
 var reqperba = document.getElementById("reqperba");
 var reqperbatab = document.getElementById("reqperbatab");
-console.log(reqperbatab.rows[0].cells.length);
+
 // Go through cells
 for (var i = 1; i < reqperbatab.rows.length; i++) {
     var reqperbatabRow = reqperbatab.rows[i];
@@ -122,6 +122,88 @@ if (reqperba) {
             }
         }
     });
+}
+
+
+// Requests per region
+var reqperreg = document.getElementById("reqperreg");
+var reqperregtab = document.getElementById("reqperregtab");
+
+// Go through cells
+for (var i = 1; i < reqperregtab.rows.length; i++) {
+    var reqperregtabRow = reqperregtab.rows[i];
+    var apacData = {};
+    var emeaData = {};
+    var latamData = {};
+    var naData = {};
+    var reqperregLabels = {};
+    for (var j = 1; j < reqperregtab.rows[0].cells.length; j++) {
+        reqperregLabels[j-1] = reqperregtab.rows[0].cells[j].innerHTML;
+        apacData[j-1] = reqperregtab.rows[1].cells[j].innerHTML;
+        emeaData[j-1] = reqperregtab.rows[2].cells[j].innerHTML;
+        latamData[j-1] = reqperregtab.rows[3].cells[j].innerHTML;
+        naData[j-1] = reqperregtab.rows[4].cells[j].innerHTML;
+    }
+}
+
+if (reqperreg) {
+    var valuesApac = Object.values(apacData).map(Number);
+    var valuesEmea = Object.values(emeaData).map(Number);
+    var valuesLatam = Object.values(latamData).map(Number);
+    var valuesNa = Object.values(naData).map(Number);
+    var reqperregValuesLabels = Object.values(reqperregLabels);
+
+    new Chart(reqperreg, {
+        type: 'bar',
+        data: {
+            labels: reqperregValuesLabels,
+            datasets: [{
+                label: 'APAC',
+                data: valuesApac,
+                backgroundColor: colors[0]
+            },
+                {
+                    label: 'EMEA',
+                    data: valuesEmea,
+                    backgroundColor: colors[1]
+                },
+                {
+                    label: 'LATAM',
+                    data: valuesLatam,
+                    backgroundColor: colors[2]
+                },
+                {
+                    label: 'NA',
+                    data: valuesNa,
+                    backgroundColor: colors[3]
+                }
+            ]
+        },
+        options: {
+            legend: {
+                display: true,
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Number of opened Requests per Region',
+                fontSize: 18,
+                fontStyle: 'bold'
+            },
+            scales: {
+                xAxes: [{
+                    barPercentage: 1,
+                    categoryPercentage: 0.5,
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+
+
 }
 
 // /* large pie/donut chart */

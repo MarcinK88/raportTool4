@@ -71,6 +71,10 @@ public class ChartController {
         model.addAttribute("seDatas", monthDatas.getSeDatas());
         model.addAttribute("etDatas", monthDatas.getEtDatas());
         model.addAttribute("ctDatas", monthDatas.getCtDatas());
+        model.addAttribute("apacDatas", monthDatas.getApacDatas());
+        model.addAttribute("emeaDatas", monthDatas.getEmeaDatas());
+        model.addAttribute("latamDatas", monthDatas.getLatamDatas());
+        model.addAttribute("naDatas", monthDatas.getNaDatas());
         return "monthlyreport";
     }
 

@@ -129,6 +129,53 @@
             </div>
         </div>
     </div>
+
+<%--    Request per region--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="reqperreg"></canvas>
+                <table class="table" id="reqperregtab" style="display:none">
+                    <thead>
+                    <th></th>
+                    <c:forEach items="${sortedThreeMonths}" var="month">
+                        <th>${month}</th>
+                    </c:forEach>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>APAC</td>
+                        <c:forEach items="${apacDatas}" var="data">
+                            <td>${data}</td>
+                        </c:forEach>
+                    </tr>
+                    <tr>
+                        <td>EMEA</td>
+                        <c:forEach items="${emeaDatas}" var="data">
+                            <td>${data}</td>
+                        </c:forEach>
+                    </tr>
+                    <tr>
+                        <td>LATAM</td>
+                        <c:forEach items="${latamDatas}" var="data">
+                            <td>${data}</td>
+                        </c:forEach>
+                    </tr>
+                    <tr>
+                        <td>NA</td>
+                        <c:forEach items="${naDatas}" var="data">
+                            <td>${data}</td>
+                        </c:forEach>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="row py-2">
         <div class="col-md-4 py-1">
             <div class="card">

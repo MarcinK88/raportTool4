@@ -12,9 +12,6 @@ public class MonthDatas {
     private String selectedMonth;
     private List<String> months;
     private List<String> bas;
-    private List<Integer> firstMonthDatas;
-    private List<Integer> secondMonthDatas;
-    private List<Integer> thirdMonthDatas;
     private int selectedMonthIndex;
     private List<String> sortedMonths;
     private List<Integer> coDatas;
@@ -23,6 +20,11 @@ public class MonthDatas {
     private List<Integer> seDatas;
     private List<Integer> etDatas;
     private List<Integer> ctDatas;
+    private List<Integer> apacDatas;
+    private List<Integer> emeaDatas;
+    private List<Integer> latamDatas;
+    private List<Integer> naDatas;
+
 
 
 
@@ -37,15 +39,17 @@ public class MonthDatas {
         this.selectedMonthIndex = this.months.indexOf(this.selectedMonth);
         sortedMonths = new ArrayList<>();
         this.bas = new ArrayList<>();
-        this.firstMonthDatas = new ArrayList<>();
-        this.secondMonthDatas = new ArrayList<>();
-        this.thirdMonthDatas = new ArrayList<>();
+
         this.coDatas = new ArrayList<>();
         this.isDatas = new ArrayList<>();
         this.mxDatas = new ArrayList<>();
         this.seDatas = new ArrayList<>();
         this.etDatas = new ArrayList<>();
         this.ctDatas = new ArrayList<>();
+        this.apacDatas = new ArrayList<>();
+        this.emeaDatas = new ArrayList<>();
+        this.latamDatas = new ArrayList<>();
+        this.naDatas = new ArrayList<>();
 
         for(int i = 1; i <= 3; i++) {
             if ((selectedMonthIndex + i - 3) >= 0) {
@@ -56,7 +60,10 @@ public class MonthDatas {
                 seDatas.add(convertedRepository.countRequestPerBa("SE", selectedYear,selectedMonthIndex + i - 2));
                 etDatas.add(convertedRepository.countRequestPerBa("ET", selectedYear,selectedMonthIndex + i - 2));
                 ctDatas.add(convertedRepository.countRequestPerBa("CT", selectedYear,selectedMonthIndex + i - 2));
-
+                apacDatas.add(convertedRepository.countRequestPerRegion("APAC", selectedYear, selectedMonthIndex + i - 2));
+                emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA", selectedYear, selectedMonthIndex + i - 2));
+                latamDatas.add(convertedRepository.countRequestPerRegion("LATAM", selectedYear, selectedMonthIndex + i - 2));
+                naDatas.add(convertedRepository.countRequestPerRegion("NA", selectedYear, selectedMonthIndex + i - 2));
             } else {
 
                 sortedMonths.add(months.get(months.size() - 3 + i + selectedMonthIndex));
@@ -66,7 +73,10 @@ public class MonthDatas {
                 seDatas.add(convertedRepository.countRequestPerBa("SE", selectedYear-1,months.size() - 2 + i + selectedMonthIndex ));
                 etDatas.add(convertedRepository.countRequestPerBa("ET", selectedYear-1,months.size() - 2 + i + selectedMonthIndex ));
                 ctDatas.add(convertedRepository.countRequestPerBa("CT", selectedYear-1,months.size() - 2 + i + selectedMonthIndex ));
-
+                apacDatas.add(convertedRepository.countRequestPerRegion("APAC",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
+                emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
+                latamDatas.add(convertedRepository.countRequestPerRegion("LATAM",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
+                naDatas.add(convertedRepository.countRequestPerRegion("NA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
             }
 
             }
@@ -104,30 +114,6 @@ public class MonthDatas {
 
     public void setBas(List<String> bas) {
         this.bas = bas;
-    }
-
-    public List<Integer> getFirstMonthDatas() {
-        return firstMonthDatas;
-    }
-
-    public void setFirstMonthDatas(List<Integer> firstMonthDatas) {
-        this.firstMonthDatas = firstMonthDatas;
-    }
-
-    public List<Integer> getSecondMonthDatas() {
-        return secondMonthDatas;
-    }
-
-    public void setSecondMonthDatas(List<Integer> secondMonthDatas) {
-        this.secondMonthDatas = secondMonthDatas;
-    }
-
-    public List<Integer> getThirdMonthDatas() {
-        return thirdMonthDatas;
-    }
-
-    public void setThirdMonthDatas(List<Integer> thirdMonthDatas) {
-        this.thirdMonthDatas = thirdMonthDatas;
     }
 
     public int getSelectedMonthIndex() {
@@ -192,5 +178,37 @@ public class MonthDatas {
 
     public void setCtDatas(List<Integer> ctDatas) {
         this.ctDatas = ctDatas;
+    }
+
+    public List<Integer> getApacDatas() {
+        return apacDatas;
+    }
+
+    public void setApacDatas(List<Integer> apacDatas) {
+        this.apacDatas = apacDatas;
+    }
+
+    public List<Integer> getEmeaDatas() {
+        return emeaDatas;
+    }
+
+    public void setEmeaDatas(List<Integer> emeaDatas) {
+        this.emeaDatas = emeaDatas;
+    }
+
+    public List<Integer> getLatamDatas() {
+        return latamDatas;
+    }
+
+    public void setLatamDatas(List<Integer> latamDatas) {
+        this.latamDatas = latamDatas;
+    }
+
+    public List<Integer> getNaDatas() {
+        return naDatas;
+    }
+
+    public void setNaDatas(List<Integer> naDatas) {
+        this.naDatas = naDatas;
     }
 }
