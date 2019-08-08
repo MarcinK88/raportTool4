@@ -85,10 +85,7 @@ var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
 var chBar = document.getElementById("chBar");
 var table = document.getElementById('dataTable');
 var json = []; // First row needs to be headers
-var headers =[];
-for (var i = 0; i < table.rows[0].cells.length; i++) {
-    headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
-}
+
 // Go through cells
 for (var i = 1; i < table.rows.length; i++) {
     var tableRow = table.rows[i];
@@ -98,13 +95,13 @@ for (var i = 1; i < table.rows.length; i++) {
     var domainData = {};
     var otherData = {};
     var labels = {};
-    for (var i = 0; i < table.rows[0].cells.length; i++) {
-        labels[i] = table.rows[0].cells[i].innerHTML;
-        otherData[i] = table.rows[1].cells[i].innerHTML;
-        domainData[i] = table.rows[2].cells[i].innerHTML;
-        ipData[i] = table.rows[3].cells[i].innerHTML;
-        sslData[i] = table.rows[4].cells[i].innerHTML;
-        dnsData[i] = table.rows[5].cells[i].innerHTML;
+    for (var i = 1; i < table.rows[0].cells.length; i++) {
+        labels[i-1] = table.rows[0].cells[i].innerHTML;
+        otherData[i-1] = table.rows[1].cells[i].innerHTML;
+        domainData[i-1] = table.rows[2].cells[i].innerHTML;
+        ipData[i-1] = table.rows[3].cells[i].innerHTML;
+        sslData[i-1] = table.rows[4].cells[i].innerHTML;
+        dnsData[i-1] = table.rows[5].cells[i].innerHTML;
     }
 
 
@@ -158,11 +155,18 @@ if (chBar) {
         },
         options: {
             legend: {
-                display: false
+                display: true,
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Tickets opened per month',
+                fontSize: 18,
+                fontStyle: 'bold'
             },
             scales: {
                 xAxes: [{
-                    barPercentage: 0.4,
+                    barPercentage: 1,
                     categoryPercentage: 0.5,
                     stacked: true
                 }],
