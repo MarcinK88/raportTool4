@@ -43,17 +43,17 @@
                                     </c:forEach>
                                 </tr>
                                 <tr>
-                                    <c:forEach items="${ipdata}" var="ipdata">
+                                    <c:forEach items="${ipData}" var="ipdata">
                                         <td>${ipdata}</td>
                                     </c:forEach>
                                 </tr>
                                 <tr>
-                                    <c:forEach items="${ssldata}" var="ssldata">
+                                    <c:forEach items="${sslData}" var="ssldata">
                                         <td>${ssldata}</td>
                                     </c:forEach>
                                 </tr>
                                 <tr>
-                                    <c:forEach items="${dnsdata}" var="dnsdata">
+                                    <c:forEach items="${dnsData}" var="dnsdata">
                                         <td>${dnsdata}</td>
                                     </c:forEach>
                                 </tr>
@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-
+<a href="/tablewriter/${selectedMonth}/${selectedYear}" >Generate file</a>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
 <c:set var="context" value="${pageContext.request.contextPath}" />

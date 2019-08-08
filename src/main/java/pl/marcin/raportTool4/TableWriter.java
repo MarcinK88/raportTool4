@@ -20,10 +20,11 @@ import java.util.List;
 
 public class TableWriter {
 
-    private List<Integer> years;
-    private List<String> months;
     private int selectedYear;
     private String selectedMonth;
+    
+    private List<Integer> years;
+    private List<String> months;
     private List<String> types;
     private XSSFWorkbook wb;
     private XSSFSheet sheet;
@@ -36,7 +37,7 @@ public class TableWriter {
         this.wb = new XSSFWorkbook();
         this.types = Arrays.asList("Other", "Domain mgmt", "IP mgmt", "SSL Certificate", "DNS");
         this.years = new ArrayList<>();
-        this.months = Arrays.asList("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
+        this.months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
         for(int i = LocalDate.now().getYear(); i >= 2016; i--) {
             years.add(i);
         }
@@ -317,7 +318,7 @@ public class TableWriter {
 //        try (FileOutputStream fileOut = new FileOutputStream("C:\\Users\\10619730\\Desktop\\New folder\\test.xlsx")) {
 
         resp.setContentType("text/xls");
-        resp.setHeader("Content-disposition", "attachment;filename=" + "a.xlsx");
+        resp.setHeader("Content-disposition", "attachment;filename=" + "data.xlsx");
 
         try (OutputStream fileOut = resp.getOutputStream()) {
             wb.write(fileOut);

@@ -15,6 +15,7 @@ import pl.marcin.raportTool4.Models.Ticket;
 import pl.marcin.raportTool4.Repositories.TicketRepository;
 
 import javax.validation.Valid;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -120,6 +121,7 @@ public class TicketController {
         }
 
         convertedRepository.save(ticket);
+        convertedRepository.setDates(ticket.getId(), Date.valueOf(ticket.getOpenDate().toLocalDate().plusDays(1).toString()), Date.valueOf(ticket.getCloseDate().toLocalDate().plusDays(1).toString()));
         return "redirect:/converted";
     }
 

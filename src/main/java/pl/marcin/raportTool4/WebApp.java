@@ -103,7 +103,7 @@ public class WebApp implements WebMvcConfigurer {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 //        dataSource.setUrl("jdbc:mysql://localhost:3306/sm@tk?useSSL=false&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true");
         dataSource.setUrl("jdbc:mysql://localhost:3306/sm@tk?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         dataSource.setUsername("root");

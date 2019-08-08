@@ -1,7 +1,9 @@
 package pl.marcin.raportTool4.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 import pl.marcin.raportTool4.Models.Converted;
 
 import java.util.Date;
@@ -34,5 +36,10 @@ public interface ConvertedRepository extends JpaRepository<Converted, Long> {
 
     @Query(value = "select ROUND(AVG(`Resolution Time (in days)`),1) from converted where `Request type` = ?1 AND `Open date` >= ?2 and `Open date` < ?3", nativeQuery = true)
     double kpi3(String type, Date begin, Date end);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update converted set `Open date` = ?2, `Close date` = ?3  where id = ?1", nativeQuery = true)
+    void setDates(long id, Date openDate, Date closeDate);
 
 }
