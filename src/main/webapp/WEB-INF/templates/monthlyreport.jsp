@@ -174,6 +174,32 @@
         </div>
     </div>
 
+<%--    Requests per category--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="reqpercat"></canvas>
+                <table class="table" id="reqpercattab">
+                    <thead>
+                    <th>DNS</th>
+                    <th>SSL Certificate</th>
+                    <th>IP mgmt</th>
+                    <th>Domain mgmt</th>
+                    <th>Other</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${totalDnsDatas}</td>
+                            <td>${totalSslDatas}</td>
+                            <td>${totalIpDatas}</td>
+                            <td>${totalDomainDatas}</td>
+                            <td>${totalOtherDatas}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
     <div class="row py-2">

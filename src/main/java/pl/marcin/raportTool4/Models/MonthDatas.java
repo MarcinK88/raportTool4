@@ -2,6 +2,7 @@ package pl.marcin.raportTool4.Models;
 
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +25,11 @@ public class MonthDatas {
     private List<Integer> emeaDatas;
     private List<Integer> latamDatas;
     private List<Integer> naDatas;
+    private int totalDnsDatas;
+    private int totalSslDatas;
+    private int totalIpDatas;
+    private int totalDomainDatas;
+    private int totalOtherDatas;
 
 
 
@@ -50,6 +56,7 @@ public class MonthDatas {
         this.emeaDatas = new ArrayList<>();
         this.latamDatas = new ArrayList<>();
         this.naDatas = new ArrayList<>();
+
 
         for(int i = 1; i <= 3; i++) {
             if ((selectedMonthIndex + i - 3) >= 0) {
@@ -80,6 +87,13 @@ public class MonthDatas {
             }
 
             }
+        Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
+        this.totalDnsDatas = convertedRepository.countRequestPerType("DNS",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.totalSslDatas = convertedRepository.countRequestPerType("SSL Certificate",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.totalIpDatas = convertedRepository.countRequestPerType("IP mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.totalDomainDatas = convertedRepository.countRequestPerType("Domain mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.totalOtherDatas = convertedRepository.countRequestPerType("Other",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+
         this.bas = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
 
     }
@@ -210,5 +224,45 @@ public class MonthDatas {
 
     public void setNaDatas(List<Integer> naDatas) {
         this.naDatas = naDatas;
+    }
+
+    public int getTotalDnsDatas() {
+        return totalDnsDatas;
+    }
+
+    public void setTotalDnsDatas(int totalDnsDatas) {
+        this.totalDnsDatas = totalDnsDatas;
+    }
+
+    public int getTotalSslDatas() {
+        return totalSslDatas;
+    }
+
+    public void setTotalSslDatas(int totalSslDatas) {
+        this.totalSslDatas = totalSslDatas;
+    }
+
+    public int getTotalIpDatas() {
+        return totalIpDatas;
+    }
+
+    public void setTotalIpDatas(int totalIpDatas) {
+        this.totalIpDatas = totalIpDatas;
+    }
+
+    public int getTotalDomainDatas() {
+        return totalDomainDatas;
+    }
+
+    public void setTotalDomainDatas(int totalDomainDatas) {
+        this.totalDomainDatas = totalDomainDatas;
+    }
+
+    public int getTotalOtherDatas() {
+        return totalOtherDatas;
+    }
+
+    public void setTotalOtherDatas(int totalOtherDatas) {
+        this.totalOtherDatas = totalOtherDatas;
     }
 }

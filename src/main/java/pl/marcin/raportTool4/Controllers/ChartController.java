@@ -75,6 +75,11 @@ public class ChartController {
         model.addAttribute("emeaDatas", monthDatas.getEmeaDatas());
         model.addAttribute("latamDatas", monthDatas.getLatamDatas());
         model.addAttribute("naDatas", monthDatas.getNaDatas());
+        model.addAttribute("totalDnsDatas", monthDatas.getTotalDnsDatas());
+        model.addAttribute("totalSslDatas", monthDatas.getTotalSslDatas());
+        model.addAttribute("totalIpDatas", monthDatas.getTotalIpDatas());
+        model.addAttribute("totalDomainDatas", monthDatas.getTotalDomainDatas());
+        model.addAttribute("totalOtherDatas", monthDatas.getTotalOtherDatas());
         return "monthlyreport";
     }
 

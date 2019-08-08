@@ -206,6 +206,44 @@ if (reqperreg) {
 
 }
 
+//Requests per category
+var reqpercat = document.getElementById("reqpercat");
+var reqpercattab = document.getElementById("reqpercattab");
+
+var datas = {};
+var reqpercatLabels = {};
+
+for (var j = 0; j < reqpercattab.rows[0].cells.length; j++) {
+    reqperbaLabels[j] = reqpercattab.rows[0].cells[j].innerHTML;
+    datas[j] = reqpercattab.rows[1].cells[j].innerHTML;
+
+}
+
+if (reqpercat) {
+    var valuesDatas = Object.values(datas).map(Number);
+    var reqpercatValuesLabels = Object.values(reqpercatLabels);
+
+
+new Chart(reqpercat, {
+    type: 'pie',
+    data: valuesDatas,
+    labels: reqpercatValuesLabels,
+    options: {
+        legend: {
+            display: true,
+            position: 'right'
+        },
+        title: {
+            display: true,
+            text: 'Total Number of Requests per category',
+            fontSize: 18,
+            fontStyle: 'bold'
+        }
+    }
+});
+}
+
+
 // /* large pie/donut chart */
 // var chPie = document.getElementById("chPie");
 // if (chPie) {
