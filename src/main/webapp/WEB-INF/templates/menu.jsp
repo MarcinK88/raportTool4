@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +44,7 @@
                 <a href="/importlist" class="nav-item nav-link">Import file</a>
             </div>
             <div class="navbar-nav">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.get("loggedUser")}</a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><sec:authentication property="principal.username" /></a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-info">
                     <a href="/logout" class="dropdown-item">Logout</a>
                 </div>

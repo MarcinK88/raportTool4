@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -39,6 +40,11 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "pl.marcin")
 public class WebApp implements WebMvcConfigurer {
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
+
     @Bean
     public ViewResolver internalResourceViewResolver(){
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -54,10 +60,6 @@ public class WebApp implements WebMvcConfigurer {
         localeResolver.setDefaultLocale(new Locale("pl","PL"));
         return localeResolver;
     }
-
-
-    //rejestracja filtru
-
 
 
     @Bean
@@ -100,7 +102,7 @@ public class WebApp implements WebMvcConfigurer {
     }
 
     //do połączenia z bazą danych
-    @Bean
+    @Bean(name = "dataSource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
