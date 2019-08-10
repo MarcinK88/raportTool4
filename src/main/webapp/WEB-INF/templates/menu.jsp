@@ -33,7 +33,13 @@
                         <a href="/opentickets" class="dropdown-item">Opened tickets</a>
                     </div>
                 </div>
-                <a href="/charttest" class="nav-item nav-link">Generate report</a>
+                <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reports</a>
+                <div class="dropdown-menu">
+                    <a href="/charttest" class="dropdown-item">Monthly report</a>
+                    <a href="#" class="dropdown-item">Other reports</a>
+                </div>
+                </div>
                 <a href="/importlist" class="nav-item nav-link">Import file</a>
             </div>
             <div class="navbar-nav">

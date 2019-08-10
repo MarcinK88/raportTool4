@@ -1,45 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap 4 Static Navbar with Dropdown and Search Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        .bs-example{
-            margin: 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="/" class="navbar-brand">Homepage</a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tickets</a>
-                    <div class="dropdown-menu">
-                        <a href="/tickets" class="dropdown-item">All tickets</a>
-                        <a href="/opentickets" class="dropdown-item">Opened tickets</a>
-                    </div>
+<%--    <c:set var="context" value="${pageContext.request.contextPath}" />--%>
+<%--    <script src="${context}/js/stackedChart.js"></script>--%>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col">
+            <h4>Bootstrap 4 Chart.js</h4>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-md-8 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chBar"></canvas>
+                    <table class="table" id="dataTable">
+                        <thead>
+                        <c:forEach items="${months}" var="month">
+                            <th>${month}</th>
+                        </c:forEach>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <c:forEach items="${otherData}" var="otherData">
+                                        <td>${otherData}</td>
+                                    </c:forEach>
+                                </tr>
+                                <tr>
+                                    <c:forEach items="${domainMgmtData}" var="domainMgmtData">
+                                        <td>${domainMgmtData}</td>
+                                    </c:forEach>
+                                </tr>
+                                <tr>
+                                    <c:forEach items="${ipdata}" var="ipdata">
+                                        <td>${ipdata}</td>
+                                    </c:forEach>
+                                </tr>
+                                <tr>
+                                    <c:forEach items="${ssldata}" var="ssldata">
+                                        <td>${ssldata}</td>
+                                    </c:forEach>
+                                </tr>
+                                <tr>
+                                    <c:forEach items="${dnsdata}" var="dnsdata">
+                                        <td>${dnsdata}</td>
+                                    </c:forEach>
+                                </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <a href="/charttest" class="nav-item nav-link">Generate report</a>
-                <a href="/importlist" class="nav-item nav-link">Import file</a>
-            </div>
-            <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link">Login</a>
             </div>
         </div>
-    </nav>
+        <div class="col-md-6 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chLine"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-md-4 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chDonut1"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chDonut2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chDonut3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<script src="${context}/js/stackedChart.js"></script>
+
 </body>
 </html>
+

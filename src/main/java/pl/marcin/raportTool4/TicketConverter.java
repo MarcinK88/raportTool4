@@ -3,6 +3,7 @@ package pl.marcin.raportTool4;
 import pl.marcin.raportTool4.Models.Converted;
 import pl.marcin.raportTool4.Models.Ticket;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,11 +67,11 @@ public class TicketConverter {
             converted.setRequestStatus("In progress");
         }
         converted.setYear(ticketToConvert.getOpen_time().toLocalDate().getYear());
-        converted.setOpenDate(ticketToConvert.getOpen_time());
+        converted.setOpenDate(Date.valueOf(ticketToConvert.getOpen_time().toLocalDate().plusDays(1).toString()));
         converted.setOpenCw(ticketToConvert.getOpen_time().toLocalDate().getDayOfYear()/7 + 1);
         converted.setOpenMonth(ticketToConvert.getOpen_time().toLocalDate().getMonth().name());
         if(ticketToConvert.getResolved_time() != null) {
-            converted.setCloseDate(ticketToConvert.getResolved_time());
+            converted.setCloseDate(Date.valueOf(ticketToConvert.getResolved_time().toLocalDate().plusDays(1).toString()));
             converted.setCloseCw(ticketToConvert.getResolved_time().toLocalDate().getDayOfYear() / 7 + 1);
             converted.setCloseMonth(ticketToConvert.getResolved_time().toLocalDate().getMonth().name());
 
