@@ -15,7 +15,9 @@ import pl.marcin.raportTool4.Import;
 import pl.marcin.raportTool4.Models.Ticket;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +30,15 @@ public class AppController {
     private ConvertedRepository convertedRepository;
 
     @GetMapping("/")
-    public String homepage(HttpServletRequest request, Model model) {
+    public String homepage() {
 
         return "homepage";
     }
 
+    @GetMapping("/403")
+    public String errorPage(){
+        return "403";
+    }
     @GetMapping("/bootstrap")
     public String testpage(Model model) {
 

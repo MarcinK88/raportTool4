@@ -7,7 +7,7 @@ import javax.servlet.Filter;
 public class AppInicializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[] { WebApp.class, SecurityConfig.class };
     }
 
     @Override
@@ -20,8 +20,8 @@ public class AppInicializer extends AbstractAnnotationConfigDispatcherServletIni
         return new String[] {"/"};
     }
 
-    @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[] {new LoginFilter()};
-    }
+//    @Override
+//    protected Filter[] getServletFilters() {
+//        return new Filter[] {new LoginFilter()};
+//    }
 }

@@ -1,4 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -10,6 +12,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
@@ -20,11 +23,11 @@
             Login page
         </div>
 
-        <form:form method="post" modelAttribute="user">
-            <form:input path="login" id="login" cssClass="fadeIn second" placeholder="login" />
-            <form:password path="password" id="password" cssClass="fadeIn third" placeholder="password"  />
+        <form method="post" action="/login">
+            <input type="text" name="username" id="username" cssClass="fadeIn second" placeholder="username" />
+            <input type="password" name="password" id="password" cssClass="fadeIn third" placeholder="password"  />
             <input type="submit" class="fadeIn fourth" value="Login"/>
-        </form:form>
+        </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
@@ -33,7 +36,6 @@
 
     </div>
 </div>
-
 
 </body>
 </html>

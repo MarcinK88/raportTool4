@@ -12,7 +12,7 @@ import java.io.IOException;
 
 //@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, pattern = "/login"))
 //@WebFilter("/*")
-@Component
+//@Component
 public class LoginFilter implements Filter {
 
 
