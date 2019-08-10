@@ -8,10 +8,10 @@ import static org.junit.Assert.*;
 
 public class UserDetailsServiceImpTest {
 
-//    @Ignore
+    @Ignore
     @Test
     public void generatePassword(){
-        System.out.println(new BCryptPasswordEncoder().encode("ddd"));
+        System.out.println(new BCryptPasswordEncoder().encode(""));
     }
 
 }
