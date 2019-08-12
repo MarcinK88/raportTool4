@@ -19,8 +19,7 @@
     <title>Title</title>
 </head>
 <body>
-logged user: ${sessionScope.get("loggedUser")}<br>
-<a href="/">Homepage</a>
+
 <form:form method="post" modelAttribute="ticket" cssClass="form-horizontal">
     <fieldset>
         <form:hidden path="id" />

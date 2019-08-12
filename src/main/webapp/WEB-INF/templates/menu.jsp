@@ -32,6 +32,10 @@
                     <div class="dropdown-menu">
                         <a href="/converted" class="dropdown-item">All tickets</a>
                         <a href="/opentickets" class="dropdown-item">Opened tickets</a>
+                        <a href="/noregion" class="dropdown-item">Tickets with no Region</a>
+                        <a href="/noba" class="dropdown-item">Tickets with no BA</a>
+                        <a href="/norequester" class="dropdown-item">Tickets with no Requester</a>
+                        <a href="/nocomments" class="dropdown-item">Tickets with no Comments</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -46,6 +50,8 @@
             <div class="navbar-nav">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><sec:authentication property="principal.username" /></a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-info">
+                    <sec:authorize access="hasRole('ADMIN')"><a href="/admin/editusers" class="dropdown-item">Manage users</a></sec:authorize>
+                    <a href="/changepwd" class="dropdown-item">Change password</a>
                     <a href="/logout" class="dropdown-item">Logout</a>
                 </div>
             </div>

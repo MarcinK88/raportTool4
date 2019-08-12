@@ -1,18 +1,22 @@
 package pl.marcin.raportTool4.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.marcin.raportTool4.Models.OpenedPerMonth;
+import pl.marcin.raportTool4.Models.Users;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
+import pl.marcin.raportTool4.Repositories.UsersRepository;
 import pl.marcin.raportTool4.Services.Import;
 import pl.marcin.raportTool4.Models.Ticket;
 
 import java.io.IOException;
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,6 +25,9 @@ public class AppController {
 
     @Autowired
     private ConvertedRepository convertedRepository;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     @GetMapping("/")
     public String homepage() {
@@ -35,44 +42,8 @@ public class AppController {
     @GetMapping("/bootstrap")
     public String testpage(Model model) {
 
-//        List<String> months = Arrays.asList("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
-//        JSONObject jsonObject = JSONObject.fromObject( months );
 
         OpenedPerMonth openedPerMonth = new OpenedPerMonth(2019,"May",convertedRepository);
-
-//        for(int i = 0; i < openedPerMonth.getMonths().size(); i++) {
-//            int j = 0;
-//            if ((i + openedPerMonth.getSelectedMonthIndex()) < openedPerMonth.getMonths().size()) {
-//                System.out.println(i + openedPerMonth.getSelectedMonthIndex() + 1);
-//                openedPerMonth.addDnsData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS",
-//                        2018,i + openedPerMonth.getSelectedMonthIndex() + 1));
-//                openedPerMonth.addSslData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate",
-//                        2018,i + openedPerMonth.getSelectedMonthIndex() + 1));
-//                openedPerMonth.addIpMgmtData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP Mgmt",
-//                        2018,i + openedPerMonth.getSelectedMonthIndex() + 1));
-//                openedPerMonth.addDomainMgmtData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt",
-//                        2018,i + openedPerMonth.getSelectedMonthIndex() + 1));
-//                openedPerMonth.addOtherData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other",
-//                        2018,i + openedPerMonth.getSelectedMonthIndex() + 1));
-//            }
-//            else {
-//                openedPerMonth.addDnsData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS",
-//                        2019,j + 1));
-//                openedPerMonth.addSslData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate",
-//                        2019,j + 1));
-//                openedPerMonth.addIpMgmtData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP Mgmt",
-//                        2019,j + 1));
-//                openedPerMonth.addDomainMgmtData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt",
-//                        2019,j + 1));
-//                openedPerMonth.addOtherData(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other",
-//                        2019,j + 1));
-//                j++;
-//            }
-//
-//        }
-
-
-
 
         List<String> sortedMonths = openedPerMonth.getSortedMonths();
         List<String> types = openedPerMonth.getTypes();
@@ -107,10 +78,86 @@ public class AppController {
 
     }
 
+    @GetMapping("/changepwd")
+    public String changePassword() {
 
+        return "changepwd";
+    }
 
+    @PostMapping("/changepwd")
+    public String changePasswordPost(Model model, Principal principal, @RequestParam String oldpwd, @RequestParam String newpwd) {
 
+        String response = "";
+        Users user = usersRepository.findByUsername(principal.getName());
+        if (BCrypt.checkpw(oldpwd, user.getPassword())) {
+            user.setPassword(BCrypt.hashpw(newpwd,BCrypt.gensalt()));
+            usersRepository.save(user);
+            response = "password changed";
+        } else {
+            response = "wrong password";
+        }
+        model.addAttribute("response", response);
 
+        return "/changepwd";
+    }
 
+    @GetMapping("/admin/editusers")
+    public String editUsers(Model model) {
+
+        List<Users> users = usersRepository.findAll();
+
+        model.addAttribute("users", users);
+
+        return "editUsers";
+    }
+
+    @GetMapping("/admin/editusers/{username}")
+    public String editUser(@PathVariable String username, Model model){
+
+        Users userToEdit = usersRepository.findByUsername(username);
+        model.addAttribute("user", userToEdit);
+        List<String> enabled = new ArrayList<>();
+        enabled.add("true");
+        enabled.add("false");
+        List<Integer> role = new ArrayList<>();
+        role.add(1);
+        role.add(2);
+        model.addAttribute("enabled", enabled);
+        model.addAttribute("role", role);
+        model.addAttribute("text", userToEdit.toString());
+        return "edituserform";
+    }
+
+    @PostMapping("/admin/editusers/{username}")
+    public String editUser(@ModelAttribute Users user){
+
+        Users userToCompare = usersRepository.findByUsername(user.getUsername());
+
+        if(!userToCompare.getPassword().equals(user.getPassword())) {
+            user.setPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));
+        }
+
+        usersRepository.save(user);
+
+        return "redirect:/admin/editusers";
+
+    }
+
+    @GetMapping("/newuser")
+    public String addNewUser(Model model) {
+
+        Users user = new Users();
+        model.addAttribute("user", user);
+
+        return "adduserform";
+    }
+
+    @PostMapping("/newuser")
+    public String addNewUserPost(@ModelAttribute Users user){
+
+        user.setPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));
+        usersRepository.save(user);
+        return "redirect:/admin/editusers";
+    }
 
 }

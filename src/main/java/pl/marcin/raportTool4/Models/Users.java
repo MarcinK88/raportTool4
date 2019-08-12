@@ -30,6 +30,16 @@ public class Users {
         this.userRoles = userRoles;
     }
 
+    @Override
+    public String toString() {
+        return "Users{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", userRoles=" + userRoles.getRole() +
+                '}';
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
