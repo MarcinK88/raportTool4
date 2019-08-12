@@ -80,6 +80,9 @@ public class ChartController {
         model.addAttribute("totalIpDatas", monthDatas.getTotalIpDatas());
         model.addAttribute("totalDomainDatas", monthDatas.getTotalDomainDatas());
         model.addAttribute("totalOtherDatas", monthDatas.getTotalOtherDatas());
+
+        model.addAttribute("kpi1", monthDatas.getKpi1());
+
         return "monthlyreport";
     }
 

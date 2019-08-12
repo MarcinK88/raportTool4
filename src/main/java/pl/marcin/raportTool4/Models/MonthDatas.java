@@ -30,6 +30,7 @@ public class MonthDatas {
     private int totalIpDatas;
     private int totalDomainDatas;
     private int totalOtherDatas;
+    private List<Double> kpi1;
 
 
 
@@ -56,7 +57,9 @@ public class MonthDatas {
         this.emeaDatas = new ArrayList<>();
         this.latamDatas = new ArrayList<>();
         this.naDatas = new ArrayList<>();
+        this.kpi1 = new ArrayList<>();
 
+        Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
 
         for(int i = 1; i <= 3; i++) {
             if ((selectedMonthIndex + i - 3) >= 0) {
@@ -84,10 +87,16 @@ public class MonthDatas {
                 emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 latamDatas.add(convertedRepository.countRequestPerRegion("LATAM",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 naDatas.add(convertedRepository.countRequestPerRegion("NA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
-            }
+//                kpi1.add(convertedRepository.kpi1(Date.valueOf(selectedYear-1 + "-" + (selectedMonthIndex + i - 2) + "-01"),Date.valueOf(selectedYear + "-" + (selectedMonthIndex + i - 1) + "-01")));
 
             }
-        Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
+            System.out.println("date begin: " + Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()));
+            System.out.println("date end: " + Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString()));
+
+            kpi1.add(convertedRepository.kpi1(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
+                    Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
+
+            }
         this.totalDnsDatas = convertedRepository.countRequestPerType("DNS",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalSslDatas = convertedRepository.countRequestPerType("SSL Certificate",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalIpDatas = convertedRepository.countRequestPerType("IP mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
@@ -96,6 +105,14 @@ public class MonthDatas {
 
         this.bas = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
 
+    }
+
+    public List<Double> getKpi1() {
+        return kpi1;
+    }
+
+    public void setKpi1(List<Double> kpi1) {
+        this.kpi1 = kpi1;
     }
 
     public int getSelectedYear() {

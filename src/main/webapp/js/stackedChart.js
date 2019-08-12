@@ -222,8 +222,6 @@ for (var j = 0; j < reqpercattab.rows[0].cells.length; j++) {
 if (reqpercat) {
     var valuesDatas = Object.values(datas).map(Number);
     var reqpercatValuesLabels = Object.values(reqpercatLabels).map(String);
-    console.log(valuesDatas);
-    console.log(reqpercatValuesLabels);
 
 new Chart(reqpercat, {
     type: 'pie',
@@ -250,6 +248,56 @@ new Chart(reqpercat, {
     }
 });
 }
+
+//KPI1
+var kpi1 = document.getElementById("kpi1");
+var kpi1tab = document.getElementById("kpi1tab");
+var kpi1Labels = {};
+var kpi1Data = {};
+
+// Go through cells
+for (var i = 0; i <= kpi1tab.rows.length; i++) {
+    kpi1Labels[i] = kpi1tab.rows[0].cells[i].innerHTML;
+    kpi1Data[i] = kpi1tab.rows[1].cells[i].innerHTML;
+}
+
+if(kpi1) {
+
+    var valuesKpi1 = Object.values(kpi1Data).map(Number);
+    var kpi1ValuesLabels = Object.values(kpi1Labels).map(String);
+
+    new Chart(kpi1, {
+        type: 'bar',
+        data: {
+            labels: kpi1ValuesLabels,
+            datasets: [{
+              data: valuesKpi1,
+              backgroundColor: colors[0]
+          }]
+        },
+        options: {
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+            },
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Mean resolution time in days',
+                fontSize: 18,
+                fontStyle: 'bold'
+            }
+        }
+
+    });
+}
+
+
 
 
 // /* large pie/donut chart */
