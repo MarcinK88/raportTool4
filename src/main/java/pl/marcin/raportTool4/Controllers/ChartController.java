@@ -84,6 +84,12 @@ public class ChartController {
         model.addAttribute("kpi1", monthDatas.getKpi1());
         model.addAttribute("kpi2", monthDatas.getKpi2());
 
+        model.addAttribute("kpi3DnsDatas", monthDatas.getKpi3DnsDatas());
+        model.addAttribute("kpi3SslDatas", monthDatas.getKpi3SslDatas());
+        model.addAttribute("kpi3IpDatas", monthDatas.getKpi3IpDatas());
+        model.addAttribute("kpi3DomainDatas", monthDatas.getKpi3DomainDatas());
+        model.addAttribute("kpi3OtherDatas", monthDatas.getKpi3OtherDatas());
+
         return "monthlyreport";
     }
 

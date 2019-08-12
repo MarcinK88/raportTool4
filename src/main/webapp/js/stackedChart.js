@@ -3,26 +3,6 @@
 // chart colors
 var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
 
-// /* large line chart */
-// var chLine = document.getElementById("chLine");
-// var chartData = {
-//     labels: ["S", "M", "T", "W", "T", "F", "S"],
-//     datasets: [{
-//         data: [589, 445, 483, 503, 689, 692, 634],
-//         backgroundColor: 'transparent',
-//         borderColor: colors[0],
-//         borderWidth: 4,
-//         pointBackgroundColor: colors[0]
-//     },
-//         {
-//             data: [639, 465, 493, 478, 589, 632, 674],
-//             backgroundColor: colors[3],
-//             borderColor: colors[1],
-//             borderWidth: 4,
-//             pointBackgroundColor: colors[1]
-//         }]
-// };
-//
 // Requests per BA
 var reqperba = document.getElementById("reqperba");
 var reqperbatab = document.getElementById("reqperbatab");
@@ -256,7 +236,7 @@ var kpi1Labels = {};
 var kpi1Data = {};
 
 // Go through cells
-for (var i = 0; i <= kpi1tab.rows.length; i++) {
+for (var i = 0; i < kpi1tab.rows[0].cells.length; i++) {
     kpi1Labels[i] = kpi1tab.rows[0].cells[i].innerHTML;
     kpi1Data[i] = kpi1tab.rows[1].cells[i].innerHTML;
 }
@@ -304,12 +284,12 @@ var kpi2Labels = {};
 var kpi2Data = {};
 
 // Go through cells
-for (var i = 0; i <= kpi2tab.rows.length; i++) {
+for (var i = 0; i < kpi2tab.rows[0].cells.length; i++) {
     kpi2Labels[i] = kpi2tab.rows[0].cells[i].innerHTML;
     kpi2Data[i] = kpi2tab.rows[1].cells[i].innerHTML;
 }
 
-if(kpi1) {
+if(kpi2) {
 
     var valuesKpi2 = Object.values(kpi2Data).map(Number);
     var kpi2ValuesLabels = Object.values(kpi2Labels).map(String);
@@ -345,42 +325,54 @@ if(kpi1) {
     });
 }
 
+//KPI3
+var kpi3 = document.getElementById("kpi3");
+var kpi3tab = document.getElementById("kpi3tab");
+var kpi3Labels = {};
+var kpi3Data = {};
 
-// /* large pie/donut chart */
-// var chPie = document.getElementById("chPie");
-// if (chPie) {
-//     new Chart(chPie, {
-//         type: 'pie',
-//         data: {
-//             labels: ['Desktop', 'Phone', 'Tablet', 'Unknown'],
-//             datasets: [
-//                 {
-//                     backgroundColor: [colors[1],colors[0],colors[2],colors[5]],
-//                     borderWidth: 0,
-//                     data: [50, 40, 15, 5]
-//                 }
-//             ]
-//         },
-//         plugins: [{
-//             beforeDraw: function(chart) {
-//                 var width = chart.chart.width,
-//                     height = chart.chart.height,
-//                     ctx = chart.chart.ctx;
-//                 ctx.restore();
-//                 var fontSize = (height / 70).toFixed(2);
-//                 ctx.font = fontSize + "em sans-serif";
-//                 ctx.textBaseline = "middle";
-//                 var text = chart.config.data.datasets[0].data[0] + "%",
-//                     textX = Math.round((width - ctx.measureText(text).width) / 2),
-//                     textY = height / 2;
-//                 ctx.fillText(text, textX, textY);
-//                 ctx.save();
-//             }
-//         }],
-//         options: {layout:{padding:0}, legend:{display:false}, cutoutPercentage: 80}
-//     });
-// }
-//
+// Go through cells
+for (var i = 0; i < kpi3tab.rows[0].cells.length; i++) {
+    kpi3Labels[i] = kpi3tab.rows[0].cells[i].innerHTML;
+    kpi3Data[i] = kpi3tab.rows[1].cells[i].innerHTML;
+}
+
+if(kpi3) {
+
+    var valuesKpi3 = Object.values(kpi3Data).map(Number);
+    var kpi3ValuesLabels = Object.values(kpi3Labels).map(String);
+
+    new Chart(kpi3, {
+        type: 'bar',
+        data: {
+            labels: kpi3ValuesLabels,
+            datasets: [{
+                data: valuesKpi3,
+                backgroundColor: colors[0]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Mean resolution time in days per type ',
+                fontSize: 18,
+                fontStyle: 'bold'
+            }
+        }
+
+    });
+}
+
 
 
 /* bar chart */
@@ -405,16 +397,10 @@ for (var i = 1; i < table.rows.length; i++) {
         sslData[j-1] = table.rows[4].cells[j].innerHTML;
         dnsData[j-1] = table.rows[5].cells[j].innerHTML;
     }
-
-
 }
-
 
 if (chBar) {
 
-    // var valuesOther = json.map(function (e) {
-    //     return e.otherData;
-    // });
     var valuesOther = Object.values(otherData).map(Number);
     var valuesDns = Object.values(dnsData).map(Number);
     var valuesSsl = Object.values(sslData).map(Number);
@@ -479,71 +465,4 @@ if (chBar) {
         }
     });
 }
-
-// /* 3 donut charts */
-// var donutOptions = {
-//     cutoutPercentage: 85,
-//     legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
-// };
-//
-// // donut 1
-// var chDonutData1 = {
-//     labels: ['Bootstrap', 'Popper', 'Other'],
-//     datasets: [
-//         {
-//             backgroundColor: colors.slice(0,3),
-//             borderWidth: 0,
-//             data: [74, 11, 40]
-//         }
-//     ]
-// };
-//
-// var chDonut1 = document.getElementById("chDonut1");
-// if (chDonut1) {
-//     new Chart(chDonut1, {
-//         type: 'pie',
-//         data: chDonutData1,
-//         options: donutOptions
-//     });
-// }
-//
-// // donut 2
-// var chDonutData2 = {
-//     labels: ['Wips', 'Pops', 'Dags'],
-//     datasets: [
-//         {
-//             backgroundColor: colors.slice(0,3),
-//             borderWidth: 0,
-//             data: [40, 45, 30]
-//         }
-//     ]
-// };
-// var chDonut2 = document.getElementById("chDonut2");
-// if (chDonut2) {
-//     new Chart(chDonut2, {
-//         type: 'pie',
-//         data: chDonutData2,
-//         options: donutOptions
-//     });
-// }
-//
-// // donut 3
-// var chDonutData3 = {
-//     labels: ['Angular', 'React', 'Other'],
-//     datasets: [
-//         {
-//             backgroundColor: colors.slice(0,3),
-//             borderWidth: 0,
-//             data: [21, 45, 55, 33]
-//         }
-//     ]
-// };
-// var chDonut3 = document.getElementById("chDonut3");
-// if (chDonut3) {
-//     new Chart(chDonut3, {
-//         type: 'pie',
-//         data: chDonutData3,
-//         options: donutOptions
-//     });
-// }
 
