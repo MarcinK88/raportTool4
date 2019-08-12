@@ -297,7 +297,53 @@ if(kpi1) {
     });
 }
 
+//KPI2
+var kpi2 = document.getElementById("kpi2");
+var kpi2tab = document.getElementById("kpi2tab");
+var kpi2Labels = {};
+var kpi2Data = {};
 
+// Go through cells
+for (var i = 0; i <= kpi2tab.rows.length; i++) {
+    kpi2Labels[i] = kpi2tab.rows[0].cells[i].innerHTML;
+    kpi2Data[i] = kpi2tab.rows[1].cells[i].innerHTML;
+}
+
+if(kpi1) {
+
+    var valuesKpi2 = Object.values(kpi2Data).map(Number);
+    var kpi2ValuesLabels = Object.values(kpi2Labels).map(String);
+
+    new Chart(kpi2, {
+        type: 'bar',
+        data: {
+            labels: kpi2ValuesLabels,
+            datasets: [{
+                data: valuesKpi2,
+                backgroundColor: colors[0]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: '% of tickets solved the same day',
+                fontSize: 18,
+                fontStyle: 'bold'
+            }
+        }
+
+    });
+}
 
 
 // /* large pie/donut chart */

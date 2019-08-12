@@ -82,6 +82,7 @@ public class ChartController {
         model.addAttribute("totalOtherDatas", monthDatas.getTotalOtherDatas());
 
         model.addAttribute("kpi1", monthDatas.getKpi1());
+        model.addAttribute("kpi2", monthDatas.getKpi2());
 
         return "monthlyreport";
     }

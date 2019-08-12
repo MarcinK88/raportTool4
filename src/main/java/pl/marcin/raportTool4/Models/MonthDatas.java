@@ -31,6 +31,7 @@ public class MonthDatas {
     private int totalDomainDatas;
     private int totalOtherDatas;
     private List<Double> kpi1;
+    private List<Double> kpi2;
 
 
 
@@ -58,6 +59,7 @@ public class MonthDatas {
         this.latamDatas = new ArrayList<>();
         this.naDatas = new ArrayList<>();
         this.kpi1 = new ArrayList<>();
+        this.kpi2 = new ArrayList<>();
 
         Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
 
@@ -87,13 +89,14 @@ public class MonthDatas {
                 emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 latamDatas.add(convertedRepository.countRequestPerRegion("LATAM",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 naDatas.add(convertedRepository.countRequestPerRegion("NA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
-//                kpi1.add(convertedRepository.kpi1(Date.valueOf(selectedYear-1 + "-" + (selectedMonthIndex + i - 2) + "-01"),Date.valueOf(selectedYear + "-" + (selectedMonthIndex + i - 1) + "-01")));
+
 
             }
-            System.out.println("date begin: " + Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()));
-            System.out.println("date end: " + Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString()));
 
             kpi1.add(convertedRepository.kpi1(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
+                    Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
+
+            kpi2.add(convertedRepository.kpi2(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
                     Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
 
             }
@@ -113,6 +116,14 @@ public class MonthDatas {
 
     public void setKpi1(List<Double> kpi1) {
         this.kpi1 = kpi1;
+    }
+
+    public List<Double> getKpi2() {
+        return kpi2;
+    }
+
+    public void setKpi2(List<Double> kpi2) {
+        this.kpi2 = kpi2;
     }
 
     public int getSelectedYear() {

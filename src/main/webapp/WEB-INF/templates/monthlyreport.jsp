@@ -223,6 +223,31 @@
         </div>
     </div>
 
+<%-- KPI2--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="kpi2"></canvas>
+                <table class="table" id="kpi2tab">
+                    <thead>
+                    <c:forEach items="${sortedThreeMonths}" var="month">
+                        <th>${month}</th>
+                    </c:forEach>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <c:forEach items="${kpi2}" var="kpi2var">
+                            <td>${kpi2var}</td>
+                        </c:forEach>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="row py-2">
         <div class="col-md-4 py-1">
