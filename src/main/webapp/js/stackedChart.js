@@ -214,20 +214,28 @@ var datas = {};
 var reqpercatLabels = {};
 
 for (var j = 0; j < reqpercattab.rows[0].cells.length; j++) {
-    reqperbaLabels[j] = reqpercattab.rows[0].cells[j].innerHTML;
+    reqpercatLabels[j] = reqpercattab.rows[0].cells[j].innerHTML;
     datas[j] = reqpercattab.rows[1].cells[j].innerHTML;
 
 }
 
 if (reqpercat) {
     var valuesDatas = Object.values(datas).map(Number);
-    var reqpercatValuesLabels = Object.values(reqpercatLabels);
-
+    var reqpercatValuesLabels = Object.values(reqpercatLabels).map(String);
+    console.log(valuesDatas);
+    console.log(reqpercatValuesLabels);
 
 new Chart(reqpercat, {
     type: 'pie',
-    data: valuesDatas,
-    labels: reqpercatValuesLabels,
+    data: {
+        labels: reqpercatValuesLabels,
+        datasets: [{
+            backgroundColor: [colors[0], colors[1], colors[2], colors[3], colors[4]],
+            data: valuesDatas
+        }],
+
+
+    },
     options: {
         legend: {
             display: true,

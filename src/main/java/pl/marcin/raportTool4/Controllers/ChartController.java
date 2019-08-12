@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.marcin.raportTool4.Models.MonthDatas;
 import pl.marcin.raportTool4.Models.OpenedPerMonth;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
-import pl.marcin.raportTool4.TableWriter;
+import pl.marcin.raportTool4.Services.TableWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.XMLStreamException;

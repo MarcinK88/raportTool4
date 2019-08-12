@@ -179,7 +179,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="reqpercat"></canvas>
-                <table class="table" id="reqpercattab">
+                <table class="table" id="reqpercattab" style="display:none">
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>

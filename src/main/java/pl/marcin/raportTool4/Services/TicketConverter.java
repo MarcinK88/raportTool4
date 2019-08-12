@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Services;
 
 import pl.marcin.raportTool4.Models.Converted;
 import pl.marcin.raportTool4.Models.Ticket;
@@ -26,10 +26,8 @@ public class TicketConverter {
             System.out.println("problem status = " + ticketsToConvert.get(i).getProblem_status());
             if(ticketsToConvert.get(i).getProblem_status().equalsIgnoreCase("closed") ||
                     ticketsToConvert.get(i).getProblem_status().equalsIgnoreCase("resolved")) {
-                System.out.println("wykryto wartość in closed lub resolved, powinno zapisać Closed");
                 converted.setRequestStatus("Closed");
             } else {
-                System.out.println("wykryto inną wartośc, powinno zapisać In progress");
                 converted.setRequestStatus("In progress");
             }
             converted.setYear(ticketsToConvert.get(i).getOpen_time().toLocalDate().getYear());
