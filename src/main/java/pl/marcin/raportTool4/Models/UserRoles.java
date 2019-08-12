@@ -10,18 +10,18 @@ public class UserRoles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_role_id")
     private int userRoleId;
     private String role;
-    @ManyToOne
-    @JoinColumn(name = "username")
-    private Users user;
+
+
 
     public UserRoles() {
     }
 
     public UserRoles(String role, Users user) {
         this.role = role;
-        this.user = user;
+
     }
 
     public int getUserRoleId() {
@@ -40,11 +40,4 @@ public class UserRoles {
         this.role = role;
     }
 
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
 }

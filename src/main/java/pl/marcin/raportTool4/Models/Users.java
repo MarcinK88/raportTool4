@@ -13,20 +13,29 @@ public class Users {
 
     private String password;
 
-    private int enabled;
+    private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<UserRoles> userRoles = new HashSet<>();
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name ="userRoles_userRoleId",referencedColumnName = "user_role_id")
+    private UserRoles userRoles;
 
 
     public Users() {
     }
 
-    public Users(String username, String password, int enabled, Set<UserRoles> userRoles) {
+    public Users(String username, String password, boolean enabled, UserRoles userRoles) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.userRoles = userRoles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getUsername() {
@@ -45,27 +54,14 @@ public class Users {
         this.password = password;
     }
 
-    public int getEnabled() {
-        return enabled;
-    }
 
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    }
-
-    public Set<UserRoles> getUserRoles() {
+    public UserRoles getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<UserRoles> userRoles) {
+    public void setUserRoles(UserRoles userRoles) {
         this.userRoles = userRoles;
     }
 
-    public boolean isEnabled() {
-        if (enabled == 1){
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 }
