@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.marcin.raportTool4.Models.MonthDatas;
 import pl.marcin.raportTool4.Models.OpenedPerMonth;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
-import pl.marcin.raportTool4.TableWriter;
+import pl.marcin.raportTool4.Services.TableWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.XMLStreamException;
@@ -80,6 +80,16 @@ public class ChartController {
         model.addAttribute("totalIpDatas", monthDatas.getTotalIpDatas());
         model.addAttribute("totalDomainDatas", monthDatas.getTotalDomainDatas());
         model.addAttribute("totalOtherDatas", monthDatas.getTotalOtherDatas());
+
+        model.addAttribute("kpi1", monthDatas.getKpi1());
+        model.addAttribute("kpi2", monthDatas.getKpi2());
+
+        model.addAttribute("kpi3DnsDatas", monthDatas.getKpi3DnsDatas());
+        model.addAttribute("kpi3SslDatas", monthDatas.getKpi3SslDatas());
+        model.addAttribute("kpi3IpDatas", monthDatas.getKpi3IpDatas());
+        model.addAttribute("kpi3DomainDatas", monthDatas.getKpi3DomainDatas());
+        model.addAttribute("kpi3OtherDatas", monthDatas.getKpi3OtherDatas());
+
         return "monthlyreport";
     }
 

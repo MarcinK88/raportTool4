@@ -30,6 +30,13 @@ public class MonthDatas {
     private int totalIpDatas;
     private int totalDomainDatas;
     private int totalOtherDatas;
+    private List<Double> kpi1;
+    private List<Double> kpi2;
+    private double kpi3DnsDatas;
+    private double kpi3SslDatas;
+    private double kpi3IpDatas;
+    private double kpi3DomainDatas;
+    private double kpi3OtherDatas;
 
 
 
@@ -56,7 +63,10 @@ public class MonthDatas {
         this.emeaDatas = new ArrayList<>();
         this.latamDatas = new ArrayList<>();
         this.naDatas = new ArrayList<>();
+        this.kpi1 = new ArrayList<>();
+        this.kpi2 = new ArrayList<>();
 
+        Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
 
         for(int i = 1; i <= 3; i++) {
             if ((selectedMonthIndex + i - 3) >= 0) {
@@ -84,185 +94,165 @@ public class MonthDatas {
                 emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 latamDatas.add(convertedRepository.countRequestPerRegion("LATAM",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 naDatas.add(convertedRepository.countRequestPerRegion("NA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
-            }
+
 
             }
-        Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
+
+            kpi1.add(convertedRepository.kpi1(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
+                    Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
+
+            kpi2.add(convertedRepository.kpi2(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
+                    Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
+
+            }
         this.totalDnsDatas = convertedRepository.countRequestPerType("DNS",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalSslDatas = convertedRepository.countRequestPerType("SSL Certificate",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalIpDatas = convertedRepository.countRequestPerType("IP mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalDomainDatas = convertedRepository.countRequestPerType("Domain mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.totalOtherDatas = convertedRepository.countRequestPerType("Other",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
 
+        this.kpi3DnsDatas = convertedRepository.kpi3("DNS", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.kpi3SslDatas = convertedRepository.kpi3("SSL Certificate", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.kpi3IpDatas = convertedRepository.kpi3("IP mgmt", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.kpi3DomainDatas = convertedRepository.kpi3("Domain mgmt", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+        this.kpi3OtherDatas = convertedRepository.kpi3("Other", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+
         this.bas = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
 
+    }
+
+    public List<Double> getKpi1() {
+        return kpi1;
+    }
+
+    public List<Double> getKpi2() {
+        return kpi2;
+    }
+
+    public double getKpi3DnsDatas() {
+        return kpi3DnsDatas;
+    }
+
+    public double getKpi3SslDatas() {
+        return kpi3SslDatas;
+    }
+
+    public double getKpi3IpDatas() {
+        return kpi3IpDatas;
+    }
+
+    public void setKpi3IpDatas(double kpi3IpDatas) {
+        this.kpi3IpDatas = kpi3IpDatas;
+    }
+
+    public double getKpi3DomainDatas() {
+        return kpi3DomainDatas;
+    }
+
+    public double getKpi3OtherDatas() {
+        return kpi3OtherDatas;
     }
 
     public int getSelectedYear() {
         return selectedYear;
     }
 
-    public void setSelectedYear(int selectedYear) {
-        this.selectedYear = selectedYear;
-    }
-
     public String getSelectedMonth() {
         return selectedMonth;
-    }
-
-    public void setSelectedMonth(String selectedMonth) {
-        this.selectedMonth = selectedMonth;
     }
 
     public List<String> getMonths() {
         return months;
     }
 
-    public void setMonths(List<String> months) {
-        this.months = months;
-    }
 
     public List<String> getBas() {
         return bas;
     }
 
-    public void setBas(List<String> bas) {
-        this.bas = bas;
-    }
 
     public int getSelectedMonthIndex() {
         return selectedMonthIndex;
     }
 
-    public void setSelectedMonthIndex(int selectedMonthIndex) {
-        this.selectedMonthIndex = selectedMonthIndex;
-    }
 
     public List<String> getSortedMonths() {
         return sortedMonths;
     }
 
-    public void setSortedMonths(List<String> sortedMonths) {
-        this.sortedMonths = sortedMonths;
-    }
 
     public List<Integer> getCoDatas() {
         return coDatas;
     }
 
-    public void setCoDatas(List<Integer> coDatas) {
-        this.coDatas = coDatas;
-    }
 
     public List<Integer> getIsDatas() {
         return isDatas;
     }
 
-    public void setIsDatas(List<Integer> isDatas) {
-        this.isDatas = isDatas;
-    }
 
     public List<Integer> getMxDatas() {
         return mxDatas;
     }
 
-    public void setMxDatas(List<Integer> mxDatas) {
-        this.mxDatas = mxDatas;
-    }
 
     public List<Integer> getSeDatas() {
         return seDatas;
     }
 
-    public void setSeDatas(List<Integer> seDatas) {
-        this.seDatas = seDatas;
-    }
 
     public List<Integer> getEtDatas() {
         return etDatas;
     }
 
-    public void setEtDatas(List<Integer> etDatas) {
-        this.etDatas = etDatas;
-    }
 
     public List<Integer> getCtDatas() {
         return ctDatas;
     }
 
-    public void setCtDatas(List<Integer> ctDatas) {
-        this.ctDatas = ctDatas;
-    }
 
     public List<Integer> getApacDatas() {
         return apacDatas;
     }
 
-    public void setApacDatas(List<Integer> apacDatas) {
-        this.apacDatas = apacDatas;
-    }
 
     public List<Integer> getEmeaDatas() {
         return emeaDatas;
     }
 
-    public void setEmeaDatas(List<Integer> emeaDatas) {
-        this.emeaDatas = emeaDatas;
-    }
 
     public List<Integer> getLatamDatas() {
         return latamDatas;
     }
 
-    public void setLatamDatas(List<Integer> latamDatas) {
-        this.latamDatas = latamDatas;
-    }
 
     public List<Integer> getNaDatas() {
         return naDatas;
     }
 
-    public void setNaDatas(List<Integer> naDatas) {
-        this.naDatas = naDatas;
-    }
 
     public int getTotalDnsDatas() {
         return totalDnsDatas;
     }
 
-    public void setTotalDnsDatas(int totalDnsDatas) {
-        this.totalDnsDatas = totalDnsDatas;
-    }
 
     public int getTotalSslDatas() {
         return totalSslDatas;
     }
 
-    public void setTotalSslDatas(int totalSslDatas) {
-        this.totalSslDatas = totalSslDatas;
-    }
 
     public int getTotalIpDatas() {
         return totalIpDatas;
     }
 
-    public void setTotalIpDatas(int totalIpDatas) {
-        this.totalIpDatas = totalIpDatas;
-    }
 
     public int getTotalDomainDatas() {
         return totalDomainDatas;
     }
 
-    public void setTotalDomainDatas(int totalDomainDatas) {
-        this.totalDomainDatas = totalDomainDatas;
-    }
 
     public int getTotalOtherDatas() {
         return totalOtherDatas;
     }
 
-    public void setTotalOtherDatas(int totalOtherDatas) {
-        this.totalOtherDatas = totalOtherDatas;
-    }
 }

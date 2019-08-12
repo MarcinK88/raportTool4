@@ -75,11 +75,7 @@ logged user: ${sessionScope.get("loggedUser")}<br>
         <div class="form-group">
             <label class="col-md-4 control-label" for="requestStatus">Request status</label>
             <div class="col-md-4">
-                <form:select path="requestStatus" id="requestStatus" name="requestStatus" class="form-control">
-                    <option value="In progress">In progress</option>
-                    <option value="Closed">Closed</option>
-                </form:select>
-            </div>
+                <form:select path="requestStatus" id="requestStatus" name="requestStatus" class="form-control" items="${requestStatus}" />            </div>
         </div>
 
         <!-- Text input-->

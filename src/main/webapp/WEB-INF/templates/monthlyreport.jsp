@@ -3,8 +3,6 @@
 <html>
 <head>
 
-<%--    <c:set var="context" value="${pageContext.request.contextPath}" />--%>
-<%--    <script src="${context}/js/stackedChart.js"></script>--%>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -179,7 +177,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="reqpercat"></canvas>
-                <table class="table" id="reqpercattab">
+                <table class="table" id="reqpercattab" style="display:none">
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>
@@ -200,32 +198,78 @@
             </div>
         </div>
     </div>
-
-
-    <div class="row py-2">
-        <div class="col-md-4 py-1">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="chDonut1"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 py-1">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="chDonut2"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 py-1">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="chDonut3"></canvas>
-                </div>
+<%-- KPI1--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="kpi1"></canvas>
+                <table class="table" id="kpi1tab" style="display:none">
+                    <thead>
+                     <c:forEach items="${sortedThreeMonths}" var="month">
+                         <th>${month}</th>
+                     </c:forEach>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <c:forEach items="${kpi1}" var="kpi1var">
+                            <td>${kpi1var}</td>
+                        </c:forEach>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
+
+<%-- KPI2--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="kpi2"></canvas>
+                <table class="table" id="kpi2tab" style="display:none">
+                    <thead>
+                    <c:forEach items="${sortedThreeMonths}" var="month">
+                        <th>${month}</th>
+                    </c:forEach>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <c:forEach items="${kpi2}" var="kpi2var">
+                            <td>${kpi2var}</td>
+                        </c:forEach>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%-- KPi3--%>
+    <div class="col-md-6 py-1">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="kpi3"></canvas>
+                <table class="table" id="kpi3tab" style="display:none">
+                    <thead>
+                    <th>DNS</th>
+                    <th>SSL Certificate</th>
+                    <th>IP mgmt</th>
+                    <th>Domain mgmt</th>
+                    <th>Other</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>${kpi3DnsDatas}</td>
+                        <td>${kpi3SslDatas}</td>
+                        <td>${kpi3IpDatas}</td>
+                        <td>${kpi3DomainDatas}</td>
+                        <td>${kpi3OtherDatas}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
