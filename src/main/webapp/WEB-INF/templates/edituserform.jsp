@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
-    <title>Title</title>
+    <title>Raport tool</title>
 </head>
 <body>
 Edit user ${user.username}

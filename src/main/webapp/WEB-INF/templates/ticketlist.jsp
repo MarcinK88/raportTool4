@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Raport tool</title>
 </head>
 <body>
 logged user: ${sessionScope.get("loggedUser")}<br>

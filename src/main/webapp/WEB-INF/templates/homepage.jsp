@@ -2,7 +2,7 @@
 <jsp:include page="menu.jsp"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>Raport tool</title>
 </head>
 <body>
 

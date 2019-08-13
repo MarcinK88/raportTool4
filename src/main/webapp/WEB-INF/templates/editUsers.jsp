@@ -10,7 +10,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-    <title>Title</title>
+    <title>Raport tool</title>
 </head>
 <body>
 <table class="table responsive table-hover dataTable">

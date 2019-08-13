@@ -15,7 +15,7 @@
             margin: 20px;
         }
     </style>
-
+    <title>Raport tool</title>
 </head>
 <body>
 <div class="bs-example">

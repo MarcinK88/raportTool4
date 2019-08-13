@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
 
-    <title>Title</title>
+    <title>Raport tool</title>
 </head>
 <body>
 
