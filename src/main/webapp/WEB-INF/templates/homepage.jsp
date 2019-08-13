@@ -8,10 +8,9 @@
 
 <ul>
     <li><a href="/tickets">Tickets</a></li>
+    <li><a href="/selectmonth">Monthly report</a></li>
     <li><a href="/importlist">Import file</a></li>
-    <li><a href="/charts">Generate charts</a></li>
-    <li><a href="/bootstrap">Bootstrap test page</a></li>
-
+<sec:authorize access="hasRole('ADMIN')"><li><a href="/admin/editusers">Manage users</a></li></sec:authorize>
 </ul>
 </body>
 </html>

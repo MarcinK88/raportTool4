@@ -1,8 +1,6 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Configurations;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import javax.servlet.Filter;
 
 public class AppInicializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override

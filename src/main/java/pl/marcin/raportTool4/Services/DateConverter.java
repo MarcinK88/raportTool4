@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Services;
 
 import java.sql.Date;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/editTicket/**")
+                .antMatchers("/editTicket/**","/admin/**")
                     .access("hasRole('ADMIN')")
                 .antMatchers("/login", "/css/**","/loginAction")
                     .permitAll()

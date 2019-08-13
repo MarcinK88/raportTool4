@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Services;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -252,7 +252,6 @@ public class TableWriter {
             cell = row.createCell(0);
             cell.setCellValue(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex -1).getMonth().name());
             cell = row.createCell(1);
-            System.out.println("rowindex = " +rowIndex);
             cell.setCellValue(convertedRepository.kpi1(Date.valueOf(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex -1).toString()),
                     Date.valueOf(date.toLocalDate().minusMonths(NUM_OF_ROWS - rowIndex - 2).toString())));
         }

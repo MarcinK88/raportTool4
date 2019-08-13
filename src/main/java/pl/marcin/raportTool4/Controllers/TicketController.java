@@ -1,24 +1,18 @@
 package pl.marcin.raportTool4.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.marcin.raportTool4.DateConverter;
 import pl.marcin.raportTool4.Models.Converted;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
 import pl.marcin.raportTool4.Models.Ticket;
 import pl.marcin.raportTool4.Repositories.TicketRepository;
 
-import javax.validation.Valid;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,27 +25,25 @@ public class TicketController {
     @Autowired
     private ConvertedRepository convertedRepository;
 
-    @GetMapping("/alltickets")
-    public String alltickets(Model model) {
-        List<Ticket> tickets = ticketRepository.findAll();
-        model.addAttribute("tickets", tickets);
 
-        return "ticketlist";
-    }
 
     @GetMapping("/opentickets")
     public String opentickets(Model model) {
         List<Converted> tickets = convertedRepository.findByRequestStatus("in progress");
         model.addAttribute("converted", tickets);
+        String title = "Opened tickets";
+        model.addAttribute("title", title);
 
-        return "converted";
+        return "alltickets";
     }
 
-    @GetMapping("/converted")
+    @GetMapping("/alltickets")
     public String converted(Model model) {
         List<Converted> converted = convertedRepository.findAll();
         model.addAttribute("converted", converted);
-        return "converted";
+        String title = "All tickets";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/editTicket/{id}")
@@ -99,10 +91,10 @@ public class TicketController {
         requestType.add("Other");
         model.addAttribute("requestType",requestType);
 
-        List<String> status = new ArrayList<>();
-        status.add("In progress");
-        status.add("Closed");
-        model.addAttribute("status",status);
+        List<String> requestStatus = new ArrayList<>();
+        requestStatus.add("In progress");
+        requestStatus.add("Closed");
+        model.addAttribute("requestStatus", requestStatus);
 
         return "editticket";
     }
@@ -129,16 +121,18 @@ public class TicketController {
     public String noregion(Model model) {
         List<Converted> tickets = convertedRepository.findByRegion("NULL");
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no Region";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/noba")
     public String noba(Model model) {
         List<Converted> tickets = convertedRepository.findByBa("n.a");
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no BA";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/norequester")
@@ -146,10 +140,11 @@ public class TicketController {
         List<Converted> tickets = convertedRepository.findByRequester("UNKNOWN_EMAIL");
         List<Converted> tickets2 = convertedRepository.findByRequester("EMAIL_ADDRESS_NOT_UNIQUE");
         tickets.addAll(tickets2);
-
+        String title = "Tickets with no Requester";
+        model.addAttribute("title", title);
         model.addAttribute("converted", tickets);
 
-        return "converted";
+        return "alltickets";
     }
 
     @GetMapping("/nocomments")
@@ -157,8 +152,9 @@ public class TicketController {
         List<Converted> tickets = convertedRepository.findByComments("NULL");
 
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no Comments";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/tickets")
