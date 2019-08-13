@@ -25,27 +25,25 @@ public class TicketController {
     @Autowired
     private ConvertedRepository convertedRepository;
 
-    @GetMapping("/alltickets")
-    public String alltickets(Model model) {
-        List<Ticket> tickets = ticketRepository.findAll();
-        model.addAttribute("tickets", tickets);
 
-        return "ticketlist";
-    }
 
     @GetMapping("/opentickets")
     public String opentickets(Model model) {
         List<Converted> tickets = convertedRepository.findByRequestStatus("in progress");
         model.addAttribute("converted", tickets);
+        String title = "Opened tickets";
+        model.addAttribute("title", title);
 
-        return "converted";
+        return "alltickets";
     }
 
-    @GetMapping("/converted")
+    @GetMapping("/alltickets")
     public String converted(Model model) {
         List<Converted> converted = convertedRepository.findAll();
         model.addAttribute("converted", converted);
-        return "converted";
+        String title = "All tickets";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/editTicket/{id}")
@@ -123,16 +121,18 @@ public class TicketController {
     public String noregion(Model model) {
         List<Converted> tickets = convertedRepository.findByRegion("NULL");
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no Region";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/noba")
     public String noba(Model model) {
         List<Converted> tickets = convertedRepository.findByBa("n.a");
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no BA";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/norequester")
@@ -140,10 +140,11 @@ public class TicketController {
         List<Converted> tickets = convertedRepository.findByRequester("UNKNOWN_EMAIL");
         List<Converted> tickets2 = convertedRepository.findByRequester("EMAIL_ADDRESS_NOT_UNIQUE");
         tickets.addAll(tickets2);
-
+        String title = "Tickets with no Requester";
+        model.addAttribute("title", title);
         model.addAttribute("converted", tickets);
 
-        return "converted";
+        return "alltickets";
     }
 
     @GetMapping("/nocomments")
@@ -151,8 +152,9 @@ public class TicketController {
         List<Converted> tickets = convertedRepository.findByComments("NULL");
 
         model.addAttribute("converted", tickets);
-
-        return "converted";
+        String title = "Tickets with no Comments";
+        model.addAttribute("title", title);
+        return "alltickets";
     }
 
     @GetMapping("/tickets")

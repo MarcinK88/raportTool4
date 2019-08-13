@@ -1,5 +1,7 @@
 package pl.marcin.raportTool4.Models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +30,16 @@ public class Users {
         this.password = password;
         this.enabled = enabled;
         this.userRoles = userRoles;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", userRoles=" + userRoles.getRole() +
+                '}';
     }
 
     public boolean isEnabled() {

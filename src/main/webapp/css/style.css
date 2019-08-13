@@ -41,7 +41,11 @@ td {
 span {
     font-style: italic
 }
-
+.title {
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300;
+    line-height: 20px;
+}
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px) {
 

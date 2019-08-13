@@ -24,13 +24,7 @@ public class ChartController {
     @Autowired
     private ConvertedRepository convertedRepository;
 
-    @GetMapping("/charts")
-    public String charts() {
-
-        return "charts";
-    }
-
-    @GetMapping("/charttest")
+    @GetMapping("/selectmonth")
     public String charttestGet(Model model) {
 
         TableWriter tableWriter = new TableWriter();
@@ -40,10 +34,10 @@ public class ChartController {
 
 
         model.addAttribute(tableWriter);
-        return "charttest";
+        return "selectmonth";
     }
 
-    @PostMapping("/charttest")
+    @PostMapping("/selectmonth")
     public String charttestPost(@ModelAttribute TableWriter tableWriter, Model model, HttpServletResponse response) throws IOException, ParseException, XMLStreamException {
 
         OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository);
@@ -108,7 +102,7 @@ public class ChartController {
         tableWriter.createKpi3(convertedRepository);
         tableWriter.saveToFile(response);
 
-        return "charttest";
+        return "selectmonth";
 
     }
 

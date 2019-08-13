@@ -21,7 +21,7 @@
 
 
 
-        <h1>All tickets</h1>
+        <h1>${title}</h1>
         <table class="table responsive table-hover dataTable" id="sort">
             <thead>
             <tr>
