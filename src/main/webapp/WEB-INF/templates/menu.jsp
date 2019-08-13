@@ -30,7 +30,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tickets</a>
                     <div class="dropdown-menu">
-                        <a href="/converted" class="dropdown-item">All tickets</a>
+                        <a href="/alltickets" class="dropdown-item">All tickets</a>
                         <a href="/opentickets" class="dropdown-item">Opened tickets</a>
                         <a href="/noregion" class="dropdown-item">Tickets with no Region</a>
                         <a href="/noba" class="dropdown-item">Tickets with no BA</a>
@@ -41,7 +41,7 @@
                 <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reports</a>
                 <div class="dropdown-menu">
-                    <a href="/charttest" class="dropdown-item">Monthly report</a>
+                    <a href="/selectmonth" class="dropdown-item">Monthly report</a>
                     <a href="#" class="dropdown-item">Other reports</a>
                 </div>
                 </div>

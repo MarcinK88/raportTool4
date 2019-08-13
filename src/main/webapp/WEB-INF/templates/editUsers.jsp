@@ -26,7 +26,7 @@
             <td>${user.enabled}</td>
             <td>${user.userRoles.role}</td>
             <td><a href="/admin/editusers/${user.username}">EDIT</a></td>
-<%--            TODO: delete--%>
+<%--            <td><a href="/admin/confirmdelete/${user.username}">DELETE</a></td>--%>
         </tr>
     </c:forEach>
     </tbody>
