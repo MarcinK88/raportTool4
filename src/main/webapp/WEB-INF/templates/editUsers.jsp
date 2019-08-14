@@ -9,11 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
     <title>Raport tool</title>
 </head>
 <body>
-<table class="table responsive table-hover dataTable">
+<table class="table responsive table-hover dataTable tkFont">
     <thead>
     <th scope="col">username</th>
     <th scope="col">enabled</th>
@@ -31,6 +32,6 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="/newuser">add new user</a>
+<div class="tkFont"><a href="/newuser">add new user</a></div>
 </body>
 </html>

@@ -7,6 +7,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Raport tool</title>
 
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
@@ -14,7 +15,7 @@
 <body>
 
 
-<div class="container">
+<div class="container tkFont">
     <div class="row my-3">
         <div class="col">
             <h4>Monthly report</h4>

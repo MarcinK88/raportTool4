@@ -3,8 +3,10 @@
 <html>
 <head>
     <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-ACCESS DENIED
+<div class="tkFont">ACCESS DENIED</div>
 </body>
 </html>

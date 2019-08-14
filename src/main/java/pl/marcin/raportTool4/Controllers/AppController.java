@@ -54,6 +54,9 @@ public class AppController {
 
     }
 
-
+    @GetMapping("/testpage")
+    public String testpage() {
+        return "testpage";
+    }
 
 }

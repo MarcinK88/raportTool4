@@ -5,10 +5,11 @@
 <head>
     <title>Raport tool</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
-Are you sure to delete user ${username}?
+<div class="tkFont">Are you sure to delete user ${username}?</div>
 
 <a href="/admin/editusers"><button class="btn btn-danger">NO</button> </a><a href="/admin/deleteuser/${username}"><button class="btn btn-success">YES</button> </a>
 </body>

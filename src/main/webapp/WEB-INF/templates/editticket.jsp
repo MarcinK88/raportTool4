@@ -15,12 +15,13 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
     <title>Raport tool</title>
 </head>
 <body>
 
-<form:form method="post" modelAttribute="ticket" cssClass="form-horizontal">
+<form:form method="post" modelAttribute="ticket" cssClass="form-horizontal tkFont">
     <fieldset>
         <form:hidden path="id" />
         <div class="form-group">

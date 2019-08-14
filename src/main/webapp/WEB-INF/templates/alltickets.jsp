@@ -13,6 +13,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -21,8 +22,8 @@
 
 
 
-        <h1>${title}</h1>
-        <table class="table responsive table-hover dataTable" id="sort">
+        <h1 class="tkFont">${title}</h1>
+        <table class="table responsive table-hover dataTable tkFont" id="sort">
             <thead>
             <tr>
                 <th scope="col">id</th>

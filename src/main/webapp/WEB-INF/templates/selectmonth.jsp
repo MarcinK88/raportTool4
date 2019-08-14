@@ -5,10 +5,11 @@
 <head>
     <title>Raport tool</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
-<form:form method="post" modelAttribute="tableWriter">
+<form:form method="post" modelAttribute="tableWriter" cssClass="tkFont">
 
     Select Year: <form:select path="selectedYear"><form:options items="${tableWriter.years}"/></form:select> <br>
     Select Month: <form:select path="selectedMonth"><form:options items="${tableWriter.months}"/></form:select><br>

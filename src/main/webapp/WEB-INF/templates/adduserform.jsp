@@ -6,13 +6,14 @@
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
     <title>Raport tool</title>
 </head>
 <body>
 
 
-    <form:form method="post" modelAttribute="user" cssClass="form-horizontal">
+    <form:form method="post" modelAttribute="user" cssClass="form-horizontal tkFont">
 
         <fieldset>
             <div class="form-group">
