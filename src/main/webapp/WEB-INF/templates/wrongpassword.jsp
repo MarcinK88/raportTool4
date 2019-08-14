@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<p>Incorrect login or password</p>
-<p><a href="/login">back to login page</a></p>
+<p class="tkFont">Incorrect login or password</p>
+<p class="tkFont"><a href="/login">back to login page</a></p>
 </body>
 </html>

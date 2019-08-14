@@ -10,10 +10,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="css/login.css" rel="stylesheet" type="text/css"/>
     <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
 
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown tkFont">
     <div id="formContent">
         <!-- Tabs Titles -->
 

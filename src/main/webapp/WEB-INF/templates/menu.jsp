@@ -16,9 +16,11 @@
         }
     </style>
     <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<div class="bs-example">
+<div class="bs-example tkFont">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a href="/" class="navbar-brand">Homepage</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">

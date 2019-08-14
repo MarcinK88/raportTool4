@@ -5,11 +5,13 @@
 <html>
 <head>
     <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-logged user: ${sessionScope.get("loggedUser")}<br>
-<a href="/">Homepage</a>
-<table border="1">
+
+
+<table border="1" class="tkFont" >
     <tr>
         <th>id</th>
         <th>number</th>

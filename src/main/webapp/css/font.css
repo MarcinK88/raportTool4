@@ -1,0 +1,12 @@
+@font-face{
+    font-family: TKTypeRegular;
+    src: url('../fonts/TKReg.ttf');
+}
+
+.tkFont{
+    font-family: TKTypeRegular;
+}
+body{
+    font-family: TKTypeRegular;
+
+}

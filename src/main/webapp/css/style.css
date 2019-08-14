@@ -5,6 +5,12 @@ table {
 }
 
 
+@font-face{
+    font-family: TKTypeRegular;
+    src: url('../fonts/TKReg.ttf');
+}
+
+
 /* Zebra striping */
 
 tr:nth-of-type(odd) {
@@ -33,7 +39,7 @@ td:nth-of-type(1) {
 }
 
 td {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: TKTypeRegular !important;
     font-weight: 300;
     line-height: 20px;
 }
@@ -42,7 +48,7 @@ span {
     font-style: italic
 }
 .title {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: TKTypeRegular !important;
     font-weight: 300;
     line-height: 20px;
 }
@@ -113,7 +119,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 
 body {
-    font-family: 'Open Sans', 'sans-serif';
+    font-family: TKTypeRegular;
 }
 .navbar-default{background:#3285D1;border-color: #3285D1;}
 .navbar-default .navbar-nav > li > a{color:#FFF;}
@@ -122,13 +128,13 @@ body {
 .nav .open > a:focus,
 .nav > li > a:hover, .nav > li > a:focus{background-color:transparent !important;}
 
-.navbar-brand{
-    margin: 15px !important;
-    padding: 13px !important;
-    color: #fff !important;
-    font-size: 2em !important;
-    font-weight: bold !Important;
-}
+/*.navbar-brand{*/
+/*    margin: 15px !important;*/
+/*    padding: 13px !important;*/
+/*    color: #fff !important;*/
+/*    font-size: 2em !important;*/
+/*    font-weight: bold !Important;*/
+/*}*/
 
 .navbar-toggle{margin-top:20px !important;}
 .dropdown-menu{background:#fff !important;}
