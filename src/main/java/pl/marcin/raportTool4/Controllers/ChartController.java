@@ -40,7 +40,7 @@ public class ChartController {
     @PostMapping("/selectmonth")
     public String monthlyReportSelectMonthPost(@ModelAttribute TableWriter tableWriter, Model model) throws IOException, ParseException, XMLStreamException {
 
-        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository);
+        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository, "all");
 
         List<String> sortedMonths = openedPerMonth.getSortedMonths();
         List<String> types = openedPerMonth.getTypes();
@@ -122,10 +122,25 @@ public class ChartController {
 
     @PostMapping("/ba")
     public String baReport(@ModelAttribute TableWriter tableWriter, Model model) {
+        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository, tableWriter.getSelectedBa());
+
+        List<String> sortedMonths = openedPerMonth.getSortedMonths();
+        List<String> types = openedPerMonth.getTypes();
 
         model.addAttribute("selectedBa", tableWriter.getSelectedBa());
         model.addAttribute("selectedMonth", tableWriter.getSelectedMonth());
         model.addAttribute("selectedYear", tableWriter.getSelectedYear());
+
+        model.addAttribute("months", sortedMonths);
+        model.addAttribute("types", types);
+        model.addAttribute("dnsData", openedPerMonth.getDnsDatas());
+        model.addAttribute("sslData", openedPerMonth.getSslDatas());
+        model.addAttribute("ipData", openedPerMonth.getIpMgmtDatas());
+        model.addAttribute("domainMgmtData", openedPerMonth.getDomainMgmtDatas());
+        model.addAttribute("otherData", openedPerMonth.getOtherDatas());
+
+
+
 
         return "baReport";
     }

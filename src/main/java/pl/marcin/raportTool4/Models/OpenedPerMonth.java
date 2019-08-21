@@ -23,6 +23,7 @@ public class OpenedPerMonth {
     private List<Integer> otherDatas;
     private int selectedMonthIndex;
     private List<String> sortedMonths;
+    private String ba;
 
     public List<String> getSortedMonths() {
         return sortedMonths;
@@ -31,7 +32,7 @@ public class OpenedPerMonth {
     public OpenedPerMonth() {
     }
 
-    public OpenedPerMonth(int selectedYear, String selectedMonth, ConvertedRepository convertedRepository) {
+    public OpenedPerMonth(int selectedYear, String selectedMonth, ConvertedRepository convertedRepository, String ba) {
         this.months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
         this.selectedYear = selectedYear;
         this.selectedMonth = selectedMonth;
@@ -44,26 +45,49 @@ public class OpenedPerMonth {
         this.dnsDatas = new ArrayList<>();
 
         int j = 0;
-        for (int i = 1; i <= months.size(); i++) {
-            if ((selectedMonthIndex + i) < months.size()) {
-                sortedMonths.add(months.get(selectedMonthIndex + i));
-                this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other", selectedYear-1, (selectedMonthIndex+i+1)));
-                this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt", selectedYear-1, (selectedMonthIndex+i+1)));
-                this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP mgmt", selectedYear-1, (selectedMonthIndex+i+1)));
-                this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate", selectedYear-1, (selectedMonthIndex+i+1)));
-                this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS", selectedYear-1, (selectedMonthIndex+i+1)));
+
+        if(ba.equals("all")) {
+            for (int i = 1; i <= months.size(); i++) {
+                if ((selectedMonthIndex + i) < months.size()) {
+                    sortedMonths.add(months.get(selectedMonthIndex + i));
+                    this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other", selectedYear - 1, (selectedMonthIndex + i + 1)));
+                    this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt", selectedYear - 1, (selectedMonthIndex + i + 1)));
+                    this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP mgmt", selectedYear - 1, (selectedMonthIndex + i + 1)));
+                    this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate", selectedYear - 1, (selectedMonthIndex + i + 1)));
+                    this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS", selectedYear - 1, (selectedMonthIndex + i + 1)));
 
 
-            } else {
-                sortedMonths.add(months.get(selectedMonthIndex - (months.size() - i)));
-                this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other", selectedYear,j+1));
-                this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt", selectedYear,j+1));
-                this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP Mgmt", selectedYear,j+1));
-                this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate", selectedYear,j+1));
-                this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS", selectedYear,j+1));
-                j++;
+                } else {
+                    sortedMonths.add(months.get(selectedMonthIndex - (months.size() - i)));
+                    this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Other", selectedYear, j + 1));
+                    this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("Domain mgmt", selectedYear, j + 1));
+                    this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("IP Mgmt", selectedYear, j + 1));
+                    this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("SSL Certificate", selectedYear, j + 1));
+                    this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWith("DNS", selectedYear, j + 1));
+                    j++;
+                }
             }
+        } else {
+            for (int i = 1; i <= months.size(); i++) {
+                if ((selectedMonthIndex + i) < months.size()) {
+                    sortedMonths.add(months.get(selectedMonthIndex + i));
+                    this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Other", selectedYear - 1, (selectedMonthIndex + i + 1), ba));
+                    this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Domain mgmt", selectedYear - 1, (selectedMonthIndex + i + 1), ba));
+                    this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("IP mgmt", selectedYear - 1, (selectedMonthIndex + i + 1), ba));
+                    this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("SSL Certificate", selectedYear - 1, (selectedMonthIndex + i + 1), ba));
+                    this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("DNS", selectedYear - 1, (selectedMonthIndex + i + 1), ba));
 
+
+                } else {
+                    sortedMonths.add(months.get(selectedMonthIndex - (months.size() - i)));
+                    this.otherDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Other", selectedYear, j + 1, ba));
+                    this.domainMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Domain mgmt", selectedYear, j + 1, ba));
+                    this.ipMgmtDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("IP Mgmt", selectedYear, j + 1, ba));
+                    this.sslDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("SSL Certificate", selectedYear, j + 1, ba));
+                    this.dnsDatas.add(convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("DNS", selectedYear, j + 1, ba));
+                    j++;
+                }
+            }
         }
         this.years = new ArrayList<>();
         for(int i = LocalDate.now().getYear(); i >= 2016; i--) {
@@ -142,5 +166,13 @@ public class OpenedPerMonth {
 
     public List<String> getMonths() {
         return months;
+    }
+
+    public String getBa() {
+        return ba;
+    }
+
+    public void setBa(String ba) {
+        this.ba = ba;
     }
 }
