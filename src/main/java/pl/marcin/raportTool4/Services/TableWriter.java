@@ -22,6 +22,7 @@ public class TableWriter {
 
     private int selectedYear;
     private String selectedMonth;
+    private String selectedBa;
     
     private List<Integer> years;
     private List<String> months;
@@ -394,5 +395,13 @@ public class TableWriter {
 
     public XSSFWorkbook getWb() {
         return wb;
+    }
+
+    public String getSelectedBa() {
+        return selectedBa;
+    }
+
+    public void setSelectedBa(String selectedBa) {
+        this.selectedBa = selectedBa;
     }
 }

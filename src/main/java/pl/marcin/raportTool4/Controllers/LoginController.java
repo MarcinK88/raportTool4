@@ -26,33 +26,7 @@ public class LoginController {
 
         HttpSession session = request.getSession();
         session.setAttribute("loggedUser", principal.getName());
-        return "login";
+        return "homepage";
     }
-
-//    @PostMapping("/login")
-//    public String postLogin(@ModelAttribute User user, HttpServletRequest request) {
-//
-//
-//        User user1 = userRepository.findByLoginAndPassword(user.getLogin(), user.getPassword());
-//        if(user1 != null) {
-//
-//            HttpSession session = request.getSession();
-//            session.setAttribute("loggedUser", user1.getLogin());
-//
-//            return "redirect:/";
-//        } else {
-//            return "wrongpassword";
-//        }
-//    }
-
-//    @GetMapping("/logout")
-//    public String logout(HttpServletRequest request) {
-//
-//        HttpSession session = request.getSession();
-//        session.removeAttribute("loggedUser");
-//
-//        return "redirect:/";
-//    }
-
 
 }

@@ -25,7 +25,7 @@ public class ChartController {
     private ConvertedRepository convertedRepository;
 
     @GetMapping("/selectmonth")
-    public String charttestGet(Model model) {
+    public String monthlyReportSelectMonth(Model model) {
 
         TableWriter tableWriter = new TableWriter();
 
@@ -38,7 +38,7 @@ public class ChartController {
     }
 
     @PostMapping("/selectmonth")
-    public String charttestPost(@ModelAttribute TableWriter tableWriter, Model model, HttpServletResponse response) throws IOException, ParseException, XMLStreamException {
+    public String monthlyReportSelectMonthPost(@ModelAttribute TableWriter tableWriter, Model model) throws IOException, ParseException, XMLStreamException {
 
         OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository);
 
@@ -104,6 +104,30 @@ public class ChartController {
 
         return "selectmonth";
 
+    }
+
+    @GetMapping("/ba")
+    public String chooseBaAndDate(Model model) {
+
+        TableWriter tableWriter = new TableWriter();
+
+        model.addAttribute("years", tableWriter.getYears());
+        model.addAttribute("months", tableWriter.getMonths());
+        model.addAttribute("ba", tableWriter.getBa());
+
+        model.addAttribute(tableWriter);
+
+        return "baSelectMonth";
+    }
+
+    @PostMapping("/ba")
+    public String baReport(@ModelAttribute TableWriter tableWriter, Model model) {
+
+        model.addAttribute("selectedBa", tableWriter.getSelectedBa());
+        model.addAttribute("selectedMonth", tableWriter.getSelectedMonth());
+        model.addAttribute("selectedYear", tableWriter.getSelectedYear());
+
+        return "baReport";
     }
 
 

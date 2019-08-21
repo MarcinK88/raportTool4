@@ -10,7 +10,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="css/login.css" rel="stylesheet" type="text/css"/>
     <title>Raport tool</title>
-    <link href="css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -21,7 +20,6 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-<%--            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />--%>
             Login page
         </div>
 

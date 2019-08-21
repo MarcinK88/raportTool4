@@ -14,7 +14,7 @@
     <li><a href="/selectmonth">Monthly report</a></li>
     <li><a href="/importlist">Import file</a></li>
 <sec:authorize access="hasRole('ADMIN')"><li><a href="/admin/editusers">Manage users</a></li></sec:authorize>
-    <li><a href="/testpage">test page</a></li>
+<%--    <li><a href="/testpage">test page</a></li>--%>
 </ul>
 </body>
 </html>
