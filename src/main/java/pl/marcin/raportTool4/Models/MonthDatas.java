@@ -37,6 +37,7 @@ public class MonthDatas {
     private double kpi3IpDatas;
     private double kpi3DomainDatas;
     private double kpi3OtherDatas;
+    private String selectedBa;
 
 
 
@@ -44,7 +45,7 @@ public class MonthDatas {
     public MonthDatas() {
     }
 
-    public MonthDatas(int selectedYear, String selectedMonth, ConvertedRepository convertedRepository) {
+    public MonthDatas(int selectedYear, String selectedMonth, ConvertedRepository convertedRepository, String selectedBa) {
         this.months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
         this.selectedYear = selectedYear;
@@ -65,7 +66,7 @@ public class MonthDatas {
         this.naDatas = new ArrayList<>();
         this.kpi1 = new ArrayList<>();
         this.kpi2 = new ArrayList<>();
-
+        this.selectedBa = selectedBa;
         Date date = Date.valueOf(selectedYear + "-" + (selectedMonthIndex+1) + "-01");
 
         for(int i = 1; i <= 3; i++) {
@@ -105,11 +106,24 @@ public class MonthDatas {
                     Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
 
             }
-        this.totalDnsDatas = convertedRepository.countRequestPerType("DNS",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
-        this.totalSslDatas = convertedRepository.countRequestPerType("SSL Certificate",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
-        this.totalIpDatas = convertedRepository.countRequestPerType("IP mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
-        this.totalDomainDatas = convertedRepository.countRequestPerType("Domain mgmt",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
-        this.totalOtherDatas = convertedRepository.countRequestPerType("Other",Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
+
+        if(selectedBa.equals("all")) {
+            Date dateFrom = Date.valueOf(date.toLocalDate().minusMonths(2).toString());
+            Date dateTo = Date.valueOf(date.toLocalDate().plusMonths(1).toString());
+            this.totalDnsDatas = convertedRepository.countRequestPerType("DNS", dateFrom, dateTo);
+            this.totalSslDatas = convertedRepository.countRequestPerType("SSL Certificate", dateFrom, dateTo);
+            this.totalIpDatas = convertedRepository.countRequestPerType("IP mgmt", dateFrom, dateTo);
+            this.totalDomainDatas = convertedRepository.countRequestPerType("Domain mgmt", dateFrom, dateTo);
+            this.totalOtherDatas = convertedRepository.countRequestPerType("Other", dateFrom, dateTo);
+        } else {
+            this.totalDnsDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("DNS", selectedYear, selectedMonthIndex + 1, selectedBa );
+            this.totalSslDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("SSL Certificate", selectedYear, selectedMonthIndex + 1, selectedBa);
+            this.totalIpDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("IP mgmt", selectedYear, selectedMonthIndex + 1, selectedBa);
+            this.totalDomainDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Domain mgmt", selectedYear, selectedMonthIndex + 1, selectedBa);
+            this.totalOtherDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Other", selectedYear, selectedMonthIndex + 1, selectedBa);
+
+
+        }
 
         this.kpi3DnsDatas = convertedRepository.kpi3("DNS", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
         this.kpi3SslDatas = convertedRepository.kpi3("SSL Certificate", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
@@ -118,6 +132,8 @@ public class MonthDatas {
         this.kpi3OtherDatas = convertedRepository.kpi3("Other", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
 
         this.bas = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
+
+
 
     }
 

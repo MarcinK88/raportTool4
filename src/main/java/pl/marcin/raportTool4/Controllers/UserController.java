@@ -10,6 +10,7 @@ import pl.marcin.raportTool4.Repositories.UsersRepository;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -87,8 +88,9 @@ public class UserController {
     public String addNewUser(Model model) {
 
         Users user = new Users();
+        List<String> enabled = Arrays.asList("false", "true");
         model.addAttribute("user", user);
-
+        model.addAttribute("enabled", enabled);
         return "adduserform";
     }
 

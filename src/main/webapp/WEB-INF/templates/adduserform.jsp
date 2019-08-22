@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="password">Password</label>
                 <div class="col-md-1">
-                    <form:input path="password" id="password" name="password" type="password" placeholder="Change password" class="form-control input-md" />
+                    <form:input path="password" id="password" name="password" type="password" placeholder="password" class="form-control input-md" />
                 </div>
 
             <div class="col-md-4">
