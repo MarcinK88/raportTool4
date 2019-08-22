@@ -14,9 +14,12 @@
 
 ${selectedBa}, ${selectedMonth} ${selectedYear}
 
+<div class="container tkFont">
 
-<div class="row my-2">
-    <div class="col-md-6 py-1">
+    <%-- Opened Requests per month per type --%>
+
+    <div class="row my-2">
+    <div class="col-md-9 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="chBar"></canvas>
@@ -67,10 +70,38 @@ ${selectedBa}, ${selectedMonth} ${selectedYear}
     </div>
 </div>
 
+        <%-- Opened Requests in selected month per type --%>
+        <div class="col-md-6 py-1">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="openedselmon"></canvas>
+                    <table class="table table-striped table-hover table-sm table-bordered" id="openedselmontab" >
+                        <thead>
+                        <th>DNS</th>
+                        <th>SSL Certificate</th>
+                        <th>IP mgmt</th>
+                        <th>Domain mgmt</th>
+                        <th>Other</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>${totalDnsDatas}</td>
+                            <td>${totalSslDatas}</td>
+                            <td>${totalIpDatas}</td>
+                            <td>${totalDomainDatas}</td>
+                            <td>${totalOtherDatas}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<script src="${context}/js/stackedChart.js"></script>
+<script src="${context}/js/specificba.js"></script>
 </body>
 </html>

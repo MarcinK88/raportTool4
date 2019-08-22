@@ -56,7 +56,7 @@ public class ChartController {
         model.addAttribute("selectedMonth", tableWriter.getSelectedMonth());
         model.addAttribute("selectedYear", tableWriter.getSelectedYear());
 
-        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository);
+        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository, "all");
         model.addAttribute("sortedThreeMonths", monthDatas.getSortedMonths());
         model.addAttribute("ba", monthDatas.getBas());
         model.addAttribute("coDatas", monthDatas.getCoDatas());
@@ -123,6 +123,7 @@ public class ChartController {
     @PostMapping("/ba")
     public String baReport(@ModelAttribute TableWriter tableWriter, Model model) {
         OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository, tableWriter.getSelectedBa());
+        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository,tableWriter.getSelectedBa());
 
         List<String> sortedMonths = openedPerMonth.getSortedMonths();
         List<String> types = openedPerMonth.getTypes();
@@ -139,7 +140,11 @@ public class ChartController {
         model.addAttribute("domainMgmtData", openedPerMonth.getDomainMgmtDatas());
         model.addAttribute("otherData", openedPerMonth.getOtherDatas());
 
-
+        model.addAttribute("totalDnsDatas", monthDatas.getTotalDnsDatas());
+        model.addAttribute("totalSslDatas", monthDatas.getTotalSslDatas());
+        model.addAttribute("totalIpDatas", monthDatas.getTotalIpDatas());
+        model.addAttribute("totalDomainDatas", monthDatas.getTotalDomainDatas());
+        model.addAttribute("totalOtherDatas", monthDatas.getTotalOtherDatas());
 
 
         return "baReport";

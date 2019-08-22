@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="row my-2">
-        <div class="col-md-8 py-1">
+        <div class="col-md-9 py-1">
             <div class="card">
                 <div class="card-body">
                     <canvas id="chBar"></canvas>
