@@ -16,50 +16,52 @@ ${selectedBa}, ${selectedMonth} ${selectedYear}
 
 
 <div class="row my-2">
-    <div class="col-md-5 py-1">
+    <div class="col-md-6 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="chBar"></canvas>
-                <table class="table" id="dataTable" style="display:none">
-                    <thead>
-                    <th></th>
-                    <c:forEach items="${months}" var="month">
-                        <th>${month}</th>
-                    </c:forEach>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Other</td>
-                        <c:forEach items="${otherData}" var="otherData">
-                            <td>${otherData}</td>
-                        </c:forEach>
-                    </tr>
-                    <tr>
-                        <td>Domain mgmt</td>
-                        <c:forEach items="${domainMgmtData}" var="domainMgmtData">
-                            <td>${domainMgmtData}</td>
-                        </c:forEach>
-                    </tr>
-                    <tr>
-                        <td>IP mgmt</td>
-                        <c:forEach items="${ipData}" var="ipdata">
-                            <td>${ipdata}</td>
-                        </c:forEach>
-                    </tr>
-                    <tr>
-                        <td>SSL Certificate</td>
-                        <c:forEach items="${sslData}" var="ssldata">
-                            <td>${ssldata}</td>
-                        </c:forEach>
-                    </tr>
-                    <tr>
-                        <td>DNS</td>
-                        <c:forEach items="${dnsData}" var="dnsdata">
-                            <td>${dnsdata}</td>
-                        </c:forEach>
-                    </tr>
-                    </tbody>
-                </table>
+
+                 <table class="table table-striped table-hover table-sm table-bordered table-responsive" id="dataTable" > <%--   style="display:none">--%>
+                       <thead>
+                       <th></th>
+                       <c:forEach items="${months}" var="month">
+                           <th>${month}</th>
+                       </c:forEach>
+                       </thead>
+                       <tbody>
+                       <tr>
+                           <td>Other</td>
+                           <c:forEach items="${otherData}" var="otherData">
+                               <td>${otherData}</td>
+                           </c:forEach>
+                       </tr>
+                       <tr>
+                           <td>Domain mgmt</td>
+                           <c:forEach items="${domainMgmtData}" var="domainMgmtData">
+                               <td>${domainMgmtData}</td>
+                           </c:forEach>
+                       </tr>
+                       <tr>
+                           <td>IP mgmt</td>
+                           <c:forEach items="${ipData}" var="ipdata">
+                               <td>${ipdata}</td>
+                           </c:forEach>
+                       </tr>
+                       <tr>
+                           <td>SSL Certificate</td>
+                           <c:forEach items="${sslData}" var="ssldata">
+                               <td>${ssldata}</td>
+                           </c:forEach>
+                       </tr>
+                       <tr>
+                           <td>DNS</td>
+                           <c:forEach items="${dnsData}" var="dnsdata">
+                               <td>${dnsdata}</td>
+                           </c:forEach>
+                       </tr>
+                       </tbody>
+                   </table>
+
             </div>
         </div>
     </div>

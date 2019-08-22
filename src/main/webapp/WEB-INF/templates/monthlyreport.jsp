@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <canvas id="chBar"></canvas>
-                    <table class="table" id="dataTable" style="display:none">
+                    <table class="table table-striped table-hover table-sm table-bordered table-responsive" id="dataTable" >
                         <thead>
                         <th></th>
                         <c:forEach items="${months}" var="month">
@@ -76,7 +76,7 @@
             <div class="card">
                 <div class="card-body">
                     <canvas id="reqperba"></canvas>
-                    <table class="table" id="reqperbatab" style="display:none">
+                    <table class="table table-striped table-hover table-sm table-bordered" id="reqperbatab">
                         <thead>
                             <th></th>
                             <c:forEach items="${sortedThreeMonths}" var="month">
@@ -135,7 +135,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="reqperreg"></canvas>
-                <table class="table" id="reqperregtab" style="display:none">
+                <table class="table table-striped table-hover table-sm table-bordered" id="reqperregtab" >
                     <thead>
                     <th></th>
                     <c:forEach items="${sortedThreeMonths}" var="month">
@@ -179,7 +179,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="reqpercat"></canvas>
-                <table class="table" id="reqpercattab" style="display:none">
+                <table class="table table-striped table-hover table-sm table-bordered" id="reqpercattab" >
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>
@@ -205,7 +205,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi1"></canvas>
-                <table class="table" id="kpi1tab" style="display:none">
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi1tab" >
                     <thead>
                      <c:forEach items="${sortedThreeMonths}" var="month">
                          <th>${month}</th>
@@ -228,7 +228,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi2"></canvas>
-                <table class="table" id="kpi2tab" style="display:none">
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi2tab" >
                     <thead>
                     <c:forEach items="${sortedThreeMonths}" var="month">
                         <th>${month}</th>
@@ -251,7 +251,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi3"></canvas>
-                <table class="table" id="kpi3tab" style="display:none">
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi3tab" >
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>
