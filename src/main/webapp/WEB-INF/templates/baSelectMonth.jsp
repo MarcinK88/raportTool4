@@ -9,13 +9,30 @@
 
 </head>
 <body>
-<form:form method="post" modelAttribute="tableWriter" cssClass="tkFont">
+<form:form method="post" modelAttribute="tableWriter" cssClass="form-horizontal tkFont">
 
-    Select BA: <form:select path="selectedBa"><form:options items="${tableWriter.ba}"/></form:select> <br>
-    Select Year: <form:select path="selectedYear"><form:options items="${tableWriter.years}"/></form:select> <br>
-    Select Month: <form:select path="selectedMonth"><form:options items="${tableWriter.months}"/></form:select><br>
+    <div class="form-group">
+        <label class="col-md-1 control-label" for="ba">Select BA:</label>
+        <div class="col-md-1">
+                <form:select id="ba" path="selectedBa" class="form-control" items="${tableWriter.ba}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-1 control-label" for="year">Select Year:</label>
+        <div class="col-md-1">
+                <form:select id="year" path="selectedYear" class="form-control" items="${tableWriter.years}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-1 control-label" for="month">Select Month:</label>
+        <div class="col-md-1">
+                <form:select id="month" path="selectedMonth" class="form-control" items="${tableWriter.months}"/>
+        </div>
+    </div>
+
     <input type="submit" value="generate" class="btn btn-success">
-
 
 </form:form>
 

@@ -12,6 +12,7 @@
 <ul class="tkFont">
     <li><a href="/tickets">Tickets</a></li>
     <li><a href="/selectmonth">Monthly report</a></li>
+    <li><a href="/ba">BA report</a> </li>
     <li><a href="/importlist">Import file</a></li>
 <sec:authorize access="hasRole('ADMIN')"><li><a href="/admin/editusers">Manage users</a></li></sec:authorize>
 <%--    <li><a href="/testpage">test page</a></li>--%>

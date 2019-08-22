@@ -44,7 +44,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reports</a>
                 <div class="dropdown-menu">
                     <a href="/selectmonth" class="dropdown-item">Monthly report</a>
-                    <a href="/ba" class="dropdown-item">Report for specific BA</a>
+                    <a href="/ba" class="dropdown-item">BA Report</a>
                 </div>
                 </div>
                 <a href="/importlist" class="nav-item nav-link">Import file</a>
