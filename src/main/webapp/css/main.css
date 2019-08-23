@@ -1,6 +1,6 @@
 #header {
     background-color: #00a0f0;
-    margin-bottom: 66px;
+
 
     z-index: 104;
     padding:0;
@@ -52,6 +52,40 @@
 
 }
 
+.footer-meta-wrapper.fixed.relative {
 
+    bottom: 0;
+    position: relative;
+    width: 100%;
 
+}
 
+.footer-meta-wrapper.fixed.absolute {
+
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+}
+
+#footer {
+
+    background-color: #00a0f0;
+    padding-bottom: 40px;
+    display: block;
+    height: 110px;
+}
+
+#metainfo {
+
+    *zoom: 1;
+    padding: 16px 0;
+
+}
+
+#metainfo .copyright {
+
+    color: #78879b;
+    float: left;
+
+}

@@ -38,5 +38,6 @@
 
     </div>
 </div>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

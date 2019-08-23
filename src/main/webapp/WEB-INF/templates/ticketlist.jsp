@@ -77,5 +77,6 @@
     </tr>
     </c:forEach>
 </table>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

@@ -88,5 +88,6 @@
 <script src="https://cdn.datatables.net/plug-ins/1.10.15/sorting/stringMonthYear.js"></script>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <script src="${context}/js/script.js"></script>
+        <jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

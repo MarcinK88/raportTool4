@@ -36,5 +36,6 @@
     </tbody>
 </table>
 <div class="tkFont"><a href="/admin/newuser">add new user</a></div>
+<jsp:include page="footer_abs.jsp"/>
 </body>
 </html>

@@ -277,7 +277,7 @@
 
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <script src="${context}/js/stackedChart.js"></script>
-
+    <jsp:include page="footer_rel.jsp"/>
 </body>
 </html>
 

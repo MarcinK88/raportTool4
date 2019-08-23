@@ -13,5 +13,6 @@
 </form>
 
 </div>
+<jsp:include page="footer_abs.jsp"/>
 </body>
 </html>

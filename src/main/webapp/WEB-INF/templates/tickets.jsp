@@ -15,5 +15,6 @@
     <li><a href="/norequester">Tickets with no Requester</a></li>
     <li><a href="/nocomments">Tickets with no Comments</a></li>
 </ul>
+<jsp:include page="footer_abs.jsp"/>
 </body>
 </html>

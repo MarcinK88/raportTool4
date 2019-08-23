@@ -12,5 +12,6 @@
 <div class="tkFont">Are you sure to delete user ${username}?</div>
 
 <a href="/admin/editusers"><button class="btn btn-danger">NO</button> </a><a href="/admin/deleteuser/${username}"><button class="btn btn-success">YES</button> </a>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>
