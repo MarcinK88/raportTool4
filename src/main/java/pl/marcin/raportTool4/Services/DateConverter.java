@@ -11,7 +11,6 @@ public class DateConverter {
     private Date sqlDate;
     private SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
 
-
     public DateConverter(String dateToConvert) {
         this.dateToConvert = dateToConvert;
     }

@@ -2,24 +2,21 @@
 <jsp:include page="menu.jsp"/>
 <html>
 <head>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <title>Raport tool</title>
-
     <link href="css/font.css" rel="stylesheet" type="text/css"/>
-
 </head>
-
-
 <body>
-
 
 <div class="container tkFont">
     <div class="row my-3">
         <div class="col">
             <h4>Monthly report</h4>
-            <p><a href="/tablewriter/${selectedMonth}/${selectedYear}" >Generate file</a></p>
+            <p><a href="/tablewriter/${selectedMonth}/${selectedYear}">Generate file</a></p>
         </div>
     </div>
     <div class="row my-2">
@@ -27,7 +24,8 @@
             <div class="card">
                 <div class="card-body">
                     <canvas id="chBar"></canvas>
-                    <table class="table table-striped table-hover table-sm table-bordered table-responsive" id="dataTable" >
+                    <table class="table table-striped table-hover table-sm table-bordered table-responsive"
+                           id="dataTable">
                         <thead>
                         <th></th>
                         <c:forEach items="${months}" var="month">
@@ -35,53 +33,53 @@
                         </c:forEach>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <td>Other</td>
-                                    <c:forEach items="${otherData}" var="otherData">
-                                        <td>${otherData}</td>
-                                    </c:forEach>
-                                </tr>
-                                <tr>
-                                    <td>Domain mgmt</td>
-                                    <c:forEach items="${domainMgmtData}" var="domainMgmtData">
-                                        <td>${domainMgmtData}</td>
-                                    </c:forEach>
-                                </tr>
-                                <tr>
-                                    <td>IP mgmt</td>
-                                    <c:forEach items="${ipData}" var="ipdata">
-                                        <td>${ipdata}</td>
-                                    </c:forEach>
-                                </tr>
-                                <tr>
-                                    <td>SSL Certificate</td>
-                                    <c:forEach items="${sslData}" var="ssldata">
-                                        <td>${ssldata}</td>
-                                    </c:forEach>
-                                </tr>
-                                <tr>
-                                    <td>DNS</td>
-                                    <c:forEach items="${dnsData}" var="dnsdata">
-                                        <td>${dnsdata}</td>
-                                    </c:forEach>
-                                </tr>
+                        <tr>
+                            <td>Other</td>
+                            <c:forEach items="${otherData}" var="otherData">
+                                <td>${otherData}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>Domain mgmt</td>
+                            <c:forEach items="${domainMgmtData}" var="domainMgmtData">
+                                <td>${domainMgmtData}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>IP mgmt</td>
+                            <c:forEach items="${ipData}" var="ipdata">
+                                <td>${ipdata}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>SSL Certificate</td>
+                            <c:forEach items="${sslData}" var="ssldata">
+                                <td>${ssldata}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>DNS</td>
+                            <c:forEach items="${dnsData}" var="dnsdata">
+                                <td>${dnsdata}</td>
+                            </c:forEach>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-<%--        request per BA table--%>
+        <%--        request per BA table--%>
         <div class="col-md-6 py-1">
             <div class="card">
                 <div class="card-body">
                     <canvas id="reqperba"></canvas>
                     <table class="table table-striped table-hover table-sm table-bordered" id="reqperbatab">
                         <thead>
-                            <th></th>
-                            <c:forEach items="${sortedThreeMonths}" var="month">
-                                <th>${month}</th>
-                            </c:forEach>
+                        <th></th>
+                        <c:forEach items="${sortedThreeMonths}" var="month">
+                            <th>${month}</th>
+                        </c:forEach>
                         </thead>
                         <tbody>
                         <tr>
@@ -123,19 +121,18 @@
                         </tbody>
 
 
-
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-<%--    Request per region--%>
+    <%--    Request per region--%>
     <div class="col-md-6 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="reqperreg"></canvas>
-                <table class="table table-striped table-hover table-sm table-bordered" id="reqperregtab" >
+                <table class="table table-striped table-hover table-sm table-bordered" id="reqperregtab">
                     <thead>
                     <th></th>
                     <c:forEach items="${sortedThreeMonths}" var="month">
@@ -174,12 +171,12 @@
         </div>
     </div>
 
-<%--    Requests per category--%>
+    <%--    Requests per category--%>
     <div class="col-md-6 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="reqpercat"></canvas>
-                <table class="table table-striped table-hover table-sm table-bordered" id="reqpercattab" >
+                <table class="table table-striped table-hover table-sm table-bordered" id="reqpercattab">
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>
@@ -188,28 +185,28 @@
                     <th>Other</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>${totalDnsDatas}</td>
-                            <td>${totalSslDatas}</td>
-                            <td>${totalIpDatas}</td>
-                            <td>${totalDomainDatas}</td>
-                            <td>${totalOtherDatas}</td>
-                        </tr>
+                    <tr>
+                        <td>${totalDnsDatas}</td>
+                        <td>${totalSslDatas}</td>
+                        <td>${totalIpDatas}</td>
+                        <td>${totalDomainDatas}</td>
+                        <td>${totalOtherDatas}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-<%-- KPI1--%>
+    <%-- KPI1--%>
     <div class="col-md-6 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi1"></canvas>
-                <table class="table table-striped table-hover table-sm table-bordered" id="kpi1tab" >
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi1tab">
                     <thead>
-                     <c:forEach items="${sortedThreeMonths}" var="month">
-                         <th>${month}</th>
-                     </c:forEach>
+                    <c:forEach items="${sortedThreeMonths}" var="month">
+                        <th>${month}</th>
+                    </c:forEach>
                     </thead>
                     <tbody>
                     <tr>
@@ -223,12 +220,12 @@
         </div>
     </div>
 
-<%-- KPI2--%>
+    <%-- KPI2--%>
     <div class="col-md-6 py-1">
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi2"></canvas>
-                <table class="table table-striped table-hover table-sm table-bordered" id="kpi2tab" >
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi2tab">
                     <thead>
                     <c:forEach items="${sortedThreeMonths}" var="month">
                         <th>${month}</th>
@@ -251,7 +248,7 @@
         <div class="card">
             <div class="card-body">
                 <canvas id="kpi3"></canvas>
-                <table class="table table-striped table-hover table-sm table-bordered" id="kpi3tab" >
+                <table class="table table-striped table-hover table-sm table-bordered" id="kpi3tab">
                     <thead>
                     <th>DNS</th>
                     <th>SSL Certificate</th>
@@ -273,10 +270,10 @@
         </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
-<c:set var="context" value="${pageContext.request.contextPath}" />
-<script src="${context}/js/stackedChart.js"></script>
+    <c:set var="context" value="${pageContext.request.contextPath}"/>
+    <script src="${context}/js/stackedChart.js"></script>
     <jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

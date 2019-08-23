@@ -89,3 +89,11 @@
     float: left;
 
 }
+
+.divposition {
+    margin-left: 50px;
+}
+
+.tableposition {
+    max-width: 50%;
+}

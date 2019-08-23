@@ -25,8 +25,6 @@ public class TicketController {
     @Autowired
     private ConvertedRepository convertedRepository;
 
-
-
     @GetMapping("/opentickets")
     public String opentickets(Model model) {
         List<Converted> tickets = convertedRepository.findByRequestStatus("in progress");
@@ -61,7 +59,7 @@ public class TicketController {
         ticketOwners.add("Frank Witzer");
         ticketOwners.add("");
         ticketOwners.add("NULL");
-        model.addAttribute("ticketOwners",ticketOwners);
+        model.addAttribute("ticketOwners", ticketOwners);
 
         List<String> ba = new ArrayList<>();
         ba.add("CO");
@@ -72,7 +70,7 @@ public class TicketController {
         ba.add("SE");
         ba.add("n.a");
         ba.add("");
-        model.addAttribute("ba",ba);
+        model.addAttribute("ba", ba);
 
         List<String> region = new ArrayList<>();
         region.add("EMEA");
@@ -81,7 +79,7 @@ public class TicketController {
         region.add("NA");
         region.add("NULL");
         region.add("");
-        model.addAttribute("region",region);
+        model.addAttribute("region", region);
 
         List<String> requestType = new ArrayList<>();
         requestType.add("SSL Certificate");
@@ -89,7 +87,7 @@ public class TicketController {
         requestType.add("IP mgmt");
         requestType.add("Domain mgmt");
         requestType.add("Other");
-        model.addAttribute("requestType",requestType);
+        model.addAttribute("requestType", requestType);
 
         List<String> requestStatus = new ArrayList<>();
         requestStatus.add("In progress");
@@ -102,12 +100,12 @@ public class TicketController {
     @PostMapping("/editTicket/{id}")
     public String editTicket(@ModelAttribute Converted ticket) {
 
-        if(ticket.getCloseDate()!=null) {
+        if (ticket.getCloseDate() != null) {
             ticket.setCloseCw(ticket.getCloseDate().toLocalDate().getDayOfYear() / 7 + 1);
             ticket.setCloseMonth(ticket.getCloseDate().toLocalDate().getMonth().name());
             ticket.setResolutionTimeInDays(ticket.getCloseDate().toLocalDate().getDayOfYear() -
                     ticket.getOpenDate().toLocalDate().getDayOfYear());
-            if(ticket.getResolutionTimeInDays() == 0) {
+            if (ticket.getResolutionTimeInDays() == 0) {
                 ticket.setResolutionTimeInDays(1);
             }
         }
@@ -158,7 +156,7 @@ public class TicketController {
     }
 
     @GetMapping("/tickets")
-    public String tickets(){
+    public String tickets() {
         return "/tickets";
     }
 

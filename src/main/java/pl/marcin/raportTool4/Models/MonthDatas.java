@@ -39,9 +39,6 @@ public class MonthDatas {
     private double kpi3OtherDatas;
     private String selectedBa;
 
-
-
-
     public MonthDatas() {
     }
 
@@ -95,8 +92,6 @@ public class MonthDatas {
                 emeaDatas.add(convertedRepository.countRequestPerRegion("EMEA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 latamDatas.add(convertedRepository.countRequestPerRegion("LATAM",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
                 naDatas.add(convertedRepository.countRequestPerRegion("NA",selectedYear-1, months.size() - 2 + i + selectedMonthIndex ));
-
-
             }
 
             kpi1.add(convertedRepository.kpi1(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
@@ -104,7 +99,6 @@ public class MonthDatas {
 
             kpi2.add(convertedRepository.kpi2(Date.valueOf(date.toLocalDate().minusMonths(3).plusMonths(i).toString()),
                     Date.valueOf(date.toLocalDate().minusMonths(2).plusMonths(i).toString())));
-
             }
 
         if(selectedBa.equals("all")) {
@@ -121,8 +115,6 @@ public class MonthDatas {
             this.totalIpDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("IP mgmt", selectedYear, selectedMonthIndex + 1, selectedBa);
             this.totalDomainDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Domain mgmt", selectedYear, selectedMonthIndex + 1, selectedBa);
             this.totalOtherDatas = convertedRepository.countByRequestTypeAndOpenDateStartsWithAndBa("Other", selectedYear, selectedMonthIndex + 1, selectedBa);
-
-
         }
 
         this.kpi3DnsDatas = convertedRepository.kpi3("DNS", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
@@ -132,8 +124,6 @@ public class MonthDatas {
         this.kpi3OtherDatas = convertedRepository.kpi3("Other", Date.valueOf(date.toLocalDate().minusMonths(2).toString()), Date.valueOf(date.toLocalDate().plusMonths(1).toString()));
 
         this.bas = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
-
-
 
     }
 

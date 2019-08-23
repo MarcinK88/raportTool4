@@ -26,8 +26,6 @@ public class AppController {
     @Autowired
     private ConvertedRepository convertedRepository;
 
-
-
     @GetMapping("/")
     public String homepage() {
 
@@ -35,25 +33,25 @@ public class AppController {
     }
 
     @GetMapping("/403")
-    public String errorPage(){
+    public String errorPage() {
         return "403";
     }
 
 
     @GetMapping("/importlist")
-    public String importFile(Model model){
+    public String importFile(Model model) {
 
         return "importfile";
     }
+
     @PostMapping("/importlist")
-    public String importFilePost(@RequestParam("file")MultipartFile file, Model model) throws IOException {
+    public String importFilePost(@RequestParam("file") MultipartFile file, Model model) throws IOException {
 
         List<Ticket> tickets = Import.createTickets(file, convertedRepository);
 
         return "redirect:/alltickets";
 
     }
-
 
 
 }

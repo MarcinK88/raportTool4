@@ -4,10 +4,10 @@
 <head>
     <title>Raport tool</title>
     <link href="css/font.css" rel="stylesheet" type="text/css"/>
-
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="tkFont">ACCESS DENIED</div>
+<div class="tkFont divposition">ACCESS DENIED</div>
 <jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

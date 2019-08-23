@@ -18,9 +18,6 @@ public class Import {
 
     public static List<Ticket> createTickets(MultipartFile file, ConvertedRepository convertedRepository) throws IOException {
 
-
-
-
         XSSFWorkbook myWorkBook = new XSSFWorkbook(file.getInputStream());
         XSSFSheet mySheet = myWorkBook.getSheetAt(0);
         Iterator<Row> rowIterator = mySheet.iterator();
@@ -106,14 +103,9 @@ public class Import {
 
                 ticket2s.add(ticket2);
 
-
                 convertedRepository.save(TicketConverter.convertTicket(ticket2));
-
             }
-
-
         }
                 return ticket2s;
     }
-
 }

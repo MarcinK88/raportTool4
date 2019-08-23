@@ -14,8 +14,6 @@ public class UserRoles {
     private int userRoleId;
     private String role;
 
-
-
     public UserRoles() {
     }
 

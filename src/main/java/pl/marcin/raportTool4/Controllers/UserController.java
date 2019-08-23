@@ -47,7 +47,6 @@ public class UserController {
     public String editUsers(Model model) {
 
         List<Users> users = usersRepository.findAll();
-
         model.addAttribute("users", users);
 
         return "editUsers";

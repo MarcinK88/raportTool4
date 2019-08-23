@@ -11,37 +11,38 @@
     <title>Raport tool</title>
 </head>
 <body>
-<div class="tkFont">Edit user ${user.username}</div>
+<div class="tkFont divposition">Edit user ${user.username}</div>
 
-    <form:form method="post" modelAttribute="user" cssClass="form-horizontal tkFont">
-        <fieldset>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="enabled">enabled</label>
-                <div class="col-md-1">
-                    <form:select path="enabled" id="enabled" name="enabled" class="form-control" items="${enabled}" />
-                </div>
+<form:form method="post" modelAttribute="user" cssClass="form-horizontal tkFont">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="enabled">enabled</label>
+            <div class="col-md-1">
+                <form:select path="enabled" id="enabled" name="enabled" class="form-control" items="${enabled}"/>
             </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="enabled">role</label>
-                <div class="col-md-1">
-                    <form:select path="userRoles" id="role" name="role" class="form-control" >
-                        <form:option value="1">ROLE_ADMIN</form:option>
-                        <form:option value="2">ROLE_USER</form:option>
-                    </form:select>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="enabled">role</label>
+            <div class="col-md-1">
+                <form:select path="userRoles" id="role" name="role" class="form-control">
+                    <form:option value="1">ROLE_ADMIN</form:option>
+                    <form:option value="2">ROLE_USER</form:option>
+                </form:select>
             </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Password</label>
-                <div class="col-md-1">
-                    <form:input path="password" id="password" name="password" type="password" placeholder="Change password" class="form-control input-md" />
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-1">
+                <form:input path="password" id="password" name="password" type="password" placeholder="Change password"
+                            class="form-control input-md"/>
+            </div>
 
             <div class="col-md-4">
                 <button type="submit" id="save" name="save" class="btn btn-success">Save</button>
             </div>
         </div>
-        </fieldset>
-    </form:form>
+    </fieldset>
+</form:form>
 <jsp:include page="footer_abs.jsp"/>
 </body>
 </html>
