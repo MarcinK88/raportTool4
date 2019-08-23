@@ -45,10 +45,7 @@ public class TableWriter {
         this.ba = Arrays.asList("CO", "IS", "MX", "SE", "ET", "CT");
         this.region = Arrays.asList("APAC", "EMEA", "LATAM", "NA");
         this.category = Arrays.asList("DNS", "SSL Certificate", "IP mgmt", "Domain mgmt", "Other");
-
-
     }
-
 
     public void createOpenedPerMonth(ConvertedRepository convertedRepository) {
 

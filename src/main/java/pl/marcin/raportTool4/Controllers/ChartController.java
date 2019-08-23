@@ -40,7 +40,7 @@ public class ChartController {
     @PostMapping("/selectmonth")
     public String monthlyReportSelectMonthPost(@ModelAttribute TableWriter tableWriter, Model model) throws IOException, ParseException, XMLStreamException {
 
-        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository, "all");
+        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository, "all");
 
         List<String> sortedMonths = openedPerMonth.getSortedMonths();
         List<String> types = openedPerMonth.getTypes();
@@ -122,8 +122,8 @@ public class ChartController {
 
     @PostMapping("/ba")
     public String baReport(@ModelAttribute TableWriter tableWriter, Model model) {
-        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(),tableWriter.getSelectedMonth(),convertedRepository, tableWriter.getSelectedBa());
-        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository,tableWriter.getSelectedBa());
+        OpenedPerMonth openedPerMonth = new OpenedPerMonth(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository, tableWriter.getSelectedBa());
+        MonthDatas monthDatas = new MonthDatas(tableWriter.getSelectedYear(), tableWriter.getSelectedMonth(), convertedRepository, tableWriter.getSelectedBa());
 
         List<String> sortedMonths = openedPerMonth.getSortedMonths();
         List<String> types = openedPerMonth.getTypes();

@@ -35,7 +35,6 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "pl.marcin")
-//@EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "pl.marcin")
 public class WebApp implements WebMvcConfigurer {

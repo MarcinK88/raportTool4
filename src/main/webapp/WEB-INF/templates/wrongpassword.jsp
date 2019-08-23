@@ -6,7 +6,10 @@
 
 </head>
 <body>
-<p class="tkFont">Incorrect login or password</p>
-<p class="tkFont"><a href="/login">back to login page</a></p>
+<div class="divposition">
+    <p class="tkFont">Incorrect login or password</p>
+    <p class="tkFont"><a href="/login">back to login page</a></p>
+</div>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>
