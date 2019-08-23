@@ -1,4 +1,4 @@
-package pl.marcin.raportTool4;
+package pl.marcin.raportTool4.Configurations;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
