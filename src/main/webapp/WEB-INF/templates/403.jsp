@@ -8,6 +8,6 @@
 </head>
 <body>
 <div class="tkFont divposition">ACCESS DENIED</div>
-<jsp:include page="footer_rel.jsp"/>
+<jsp:include page="footer_abs.jsp"/>
 </body>
 </html>
