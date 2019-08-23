@@ -3,6 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -13,6 +14,7 @@
 
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 
 <div class="wrapper fadeInDown tkFont">
     <div id="formContent">
@@ -36,6 +38,5 @@
 
     </div>
 </div>
-
 </body>
 </html>

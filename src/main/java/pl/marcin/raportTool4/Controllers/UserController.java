@@ -1,6 +1,7 @@
 package pl.marcin.raportTool4.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,7 +85,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/newuser")
+    @GetMapping("/admin/newuser")
     public String addNewUser(Model model) {
 
         Users user = new Users();
@@ -94,7 +95,7 @@ public class UserController {
         return "adduserform";
     }
 
-    @PostMapping("/newuser")
+    @PostMapping("/admin/newuser")
     public String addNewUserPost(@ModelAttribute Users user){
 
         user.setPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));

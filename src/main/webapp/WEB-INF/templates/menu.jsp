@@ -1,5 +1,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
+<jsp:include page="header.jsp"/>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -16,10 +18,14 @@
         }
     </style>
     <title>Raport tool</title>
-    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+
+    <link href="${context}/css/font.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
+
+
 <div class="bs-example tkFont">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a href="/" class="navbar-brand">Homepage</a>
@@ -59,3 +65,7 @@
             </div>
         </div>
     </nav>
+</div>
+
+</body>
+</html>
