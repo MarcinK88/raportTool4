@@ -36,7 +36,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan(basePackages = "pl.marcin")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "pl.marcin")
+//@EnableJpaRepositories(basePackages = "pl.marcin")
 public class WebApp implements WebMvcConfigurer {
 
     @Override
@@ -67,30 +67,30 @@ public class WebApp implements WebMvcConfigurer {
     }
 
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource);
-        em.setPackagesToScan(new String[] {"pl.marcin"});
-        em.setJpaDialect(new HibernateJpaDialect());
-        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        return em;
-    }
-
-
-
-    @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(emf);
-        return transactionManager;
-    }
-
-    //do poprawnego wyświetlania błędów
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+//        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+//        em.setDataSource(dataSource);
+//        em.setPackagesToScan(new String[] {"pl.marcin"});
+//        em.setJpaDialect(new HibernateJpaDialect());
+//        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+//        return em;
+//    }
+//
+//
+//
+//    @Bean
+//    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+//        JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(emf);
+//        return transactionManager;
+//    }
+//
+//    //do poprawnego wyświetlania błędów
+//    @Bean
+//    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+//        return new PersistenceExceptionTranslationPostProcessor();
+//    }
 
 
 
