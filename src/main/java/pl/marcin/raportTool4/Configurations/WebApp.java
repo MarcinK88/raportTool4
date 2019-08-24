@@ -74,18 +74,10 @@ public class WebApp implements WebMvcConfigurer {
         em.setPackagesToScan(new String[] {"pl.marcin"});
         em.setJpaDialect(new HibernateJpaDialect());
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        em.setJpaProperties(additionalProperties());
         return em;
     }
 
-    Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-        properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.format_sql", "true");
-        return properties;
-    }
+
 
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
