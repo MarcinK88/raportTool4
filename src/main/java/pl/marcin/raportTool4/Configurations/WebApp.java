@@ -68,9 +68,9 @@ public class WebApp implements WebMvcConfigurer {
 
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
+        em.setDataSource(dataSource);
         em.setPackagesToScan(new String[] {"pl.marcin"});
         em.setJpaDialect(new HibernateJpaDialect());
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
@@ -99,19 +99,6 @@ public class WebApp implements WebMvcConfigurer {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
-
-    //do połączenia z bazą danych
-    @Bean(name = "dataSource")
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/sm@tk?useSSL=false&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/sm@tk?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("coderslab");
-        return dataSource;
-    }
-
 
 
 

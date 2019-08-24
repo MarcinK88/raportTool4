@@ -23,6 +23,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="footer_abs.jsp"/>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>
