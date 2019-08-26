@@ -21,7 +21,7 @@ public interface ConvertedRepository extends JpaRepository<Converted, Long> {
     int countByRequestTypeAndOpenDateStartsWith(String requestType, int year, int month);
 
 //    @Query(value="select COUNT(*) from converted where `Request type` = ?1 AND YEAR(`Open date`) = ?2 AND MONTH(`Open date`) = ?3 AND `BA` = ?4", nativeQuery = true)
-    @Query(value = "select COUNT(*) from converted where \"request type\" =?1 and EXTRACT(year from \"open date\") = ?2 AND EXTRACT(month from \"open date\")=?3 AND \"BA\" = ?4", nativeQuery = true)
+    @Query(value = "select COUNT(*) from converted where \"request type\" =?1 and EXTRACT(year from \"open date\") = ?2 AND EXTRACT(month from \"open date\")=?3 AND \"ba\" = ?4", nativeQuery = true)
     int countByRequestTypeAndOpenDateStartsWithAndBa(String requestType, int year, int month, String ba);
 
 //    @Query(value="select COUNT(*) from converted where `BA` = ?1 AND YEAR(`Open date`) = ?2 AND MONTH(`Open date`) = ?3", nativeQuery = true)
