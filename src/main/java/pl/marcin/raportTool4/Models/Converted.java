@@ -41,7 +41,7 @@ public class Converted {
     private Integer closeCw;
     @Column(name = "`Close month`")
     private String closeMonth;
-    @Column(name = "`Resolution Time (in days)`")
+    @Column(name = "`Resolution`")
     private Integer resolutionTimeInDays;
     private String region;
     private String ba;
