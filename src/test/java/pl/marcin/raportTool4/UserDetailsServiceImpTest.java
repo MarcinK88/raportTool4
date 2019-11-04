@@ -11,7 +11,7 @@ public class UserDetailsServiceImpTest {
     @Ignore
     @Test
     public void generatePassword(){
-        System.out.println(new BCryptPasswordEncoder().encode(""));
+        System.out.println(new BCryptPasswordEncoder().encode("bbb"));
     }
 
 }
