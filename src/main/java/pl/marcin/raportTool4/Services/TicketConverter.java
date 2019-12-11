@@ -60,6 +60,8 @@ public class TicketConverter {
         } else {
             converted.setRequestStatus("In progress");
         }
+        System.out.println("number " + ticketToConvert.getNumber());
+        System.out.println("aaaa " + ticketToConvert.getOpen_time());
         converted.setYear(ticketToConvert.getOpen_time().toLocalDate().getYear());
         converted.setOpenDate(Date.valueOf(ticketToConvert.getOpen_time().toLocalDate().plusDays(1).toString()));
         converted.setOpenCw(ticketToConvert.getOpen_time().toLocalDate().getDayOfYear() / 7 + 1);
@@ -69,8 +71,12 @@ public class TicketConverter {
             converted.setCloseCw(ticketToConvert.getResolved_time().toLocalDate().getDayOfYear() / 7 + 1);
             converted.setCloseMonth(ticketToConvert.getResolved_time().toLocalDate().getMonth().name());
 
-            converted.setResolutionTimeInDays(converted.getCloseDate().toLocalDate().getDayOfYear() -
-                    converted.getOpenDate().toLocalDate().getDayOfYear());
+//            converted.setResolutionTimeInDays(converted.getCloseDate().toLocalDate().getDayOfYear() -
+//                    converted.getOpenDate().toLocalDate().getDayOfYear());
+
+            converted.setResolutionTimeInDays(converted.getCloseDate().getTime(), converted.getOpenDate().getTime());
+
+
             if (converted.getResolutionTimeInDays() == 0) {
                 converted.setResolutionTimeInDays(1);
             }

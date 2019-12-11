@@ -6,6 +6,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
+import pl.marcin.raportTool4.Models.Converted;
 import pl.marcin.raportTool4.Models.Ticket;
 import pl.marcin.raportTool4.Repositories.ConvertedRepository;
 
@@ -103,7 +104,11 @@ public class Import {
 
                 ticket2s.add(ticket2);
 
-                convertedRepository.save(TicketConverter.convertTicket(ticket2));
+                Converted ticketToSave = TicketConverter.convertTicket(ticket2);
+
+                convertedRepository.save(ticketToSave);
+
+                convertedRepository.setResolutionTime(ticketToSave.getId(), ticketToSave.getOpenDate(), ticketToSave.getCloseDate());
             }
         }
                 return ticket2s;

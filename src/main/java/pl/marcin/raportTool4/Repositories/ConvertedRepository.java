@@ -45,4 +45,8 @@ public interface ConvertedRepository extends JpaRepository<Converted, Long> {
     @Query(value = "update converted set `Open date` = ?2, `Close date` = ?3  where id = ?1", nativeQuery = true)
     void setDates(long id, Date openDate, Date closeDate);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update converted set `Resolution Time (in days)` = (CASE WHEN (5 * (DATEDIFF((?3), (?2)) DIV 7) +MID('0123444401233334012222340111123400012345001234550', 7 * WEEKDAY((?2)) + WEEKDAY((?3)) +1,1)) = 0 then 1 else (5 * (DATEDIFF((?3), (?2)) DIV 7) +MID('0123444401233334012222340111123400012345001234550', 7 * WEEKDAY((?2)) + WEEKDAY((?3)) + 1,1))end) where id = ?1", nativeQuery = true)
+    void setResolutionTime(long id, Date openDate, Date closeDate);
 }

@@ -103,8 +103,12 @@ public class TicketController {
         if (ticket.getCloseDate() != null) {
             ticket.setCloseCw(ticket.getCloseDate().toLocalDate().getDayOfYear() / 7 + 1);
             ticket.setCloseMonth(ticket.getCloseDate().toLocalDate().getMonth().name());
-            ticket.setResolutionTimeInDays(ticket.getCloseDate().toLocalDate().getDayOfYear() -
-                    ticket.getOpenDate().toLocalDate().getDayOfYear());
+
+//            ticket.setResolutionTimeInDays(ticket.getCloseDate().toLocalDate().getDayOfYear() -
+//                    ticket.getOpenDate().toLocalDate().getDayOfYear());
+
+            ticket.setResolutionTimeInDays(ticket.getCloseDate().getTime(), ticket.getOpenDate().getTime());
+
             if (ticket.getResolutionTimeInDays() == 0) {
                 ticket.setResolutionTimeInDays(1);
             }
@@ -112,6 +116,7 @@ public class TicketController {
 
         convertedRepository.save(ticket);
         convertedRepository.setDates(ticket.getId(), Date.valueOf(ticket.getOpenDate().toLocalDate().plusDays(1).toString()), Date.valueOf(ticket.getCloseDate().toLocalDate().plusDays(1).toString()));
+        convertedRepository.setResolutionTime(ticket.getId(), ticket.getOpenDate(), ticket.getCloseDate());
         return "redirect:/converted";
     }
 

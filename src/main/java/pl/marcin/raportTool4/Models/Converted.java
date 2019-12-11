@@ -210,6 +210,11 @@ public class Converted {
         this.resolutionTimeInDays = resolutionTimeInDays;
     }
 
+    public void setResolutionTimeInDays(long closeDate, long openDate) {
+
+        this.resolutionTimeInDays = ((Long)((closeDate - openDate) / (24 * 60 * 60 * 1000))).intValue();
+    }
+
     public String getRegion() {
         return region;
     }
