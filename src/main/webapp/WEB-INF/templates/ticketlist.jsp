@@ -1,20 +1,16 @@
+<jsp:include page="menu.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: 10619730
-  Date: 17.07.2019
-  Time: 09:22
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-logged user: ${sessionScope.get("loggedUser")}<br>
-<a href="/">Homepage</a>
-<table border="1">
+
+<table border="1" class="tkFont">
     <tr>
         <th>id</th>
         <th>number</th>
@@ -47,38 +43,39 @@ logged user: ${sessionScope.get("loggedUser")}<br>
         <th>tk_company_id</th>
     </tr>
     <c:forEach items="${tickets}" var="ticket">
-    <tr>
-        <td>${ticket.id}</td>
-        <td>${ticket.number}</td>
-        <td>${ticket.open_time}</td>
-        <td>${ticket.opened_by}</td>
-        <td>${ticket.assignment}</td>
-        <td>${ticket.status}</td>
-        <td>${ticket.close_time}</td>
-        <td>${ticket.resolution_code}</td>
-        <td>${ticket.location}</td>
-        <td>${ticket.assignee_name}</td>
-        <td>${ticket.contact_name}</td>
-        <td>${ticket.company}</td>
-        <td>${ticket.brief_description}</td>
-        <td>${ticket.problem_status}</td>
-        <td>${ticket.request_type}</td>
-        <td>${ticket.product_type}</td>
-        <td>${ticket.resolved_by}</td>
-        <td>${ticket.resolved_time}</td>
-        <td>${ticket.contact_service}</td>
-        <td>${ticket.tk_contact_fullname}</td>
-        <td>${ticket.tk_contact_email}</td>
-        <td>${ticket.tk_sap_company_full_name}</td>
-        <td>${ticket.tk_assignee_name_fullname}</td>
-        <td>${ticket.tk_contact_service_fullname}</td>
-        <td>${ticket.tk_callback_contact_ldap_ba}</td>
-        <td>${ticket.ba}</td>
-        <td>${ticket.tk_country_fullname}</td>
-        <td>${ticket.dim_regions_id}</td>
-        <td>${ticket.tk_company_id}</td>
-    </tr>
+        <tr>
+            <td>${ticket.id}</td>
+            <td>${ticket.number}</td>
+            <td>${ticket.open_time}</td>
+            <td>${ticket.opened_by}</td>
+            <td>${ticket.assignment}</td>
+            <td>${ticket.status}</td>
+            <td>${ticket.close_time}</td>
+            <td>${ticket.resolution_code}</td>
+            <td>${ticket.location}</td>
+            <td>${ticket.assignee_name}</td>
+            <td>${ticket.contact_name}</td>
+            <td>${ticket.company}</td>
+            <td>${ticket.brief_description}</td>
+            <td>${ticket.problem_status}</td>
+            <td>${ticket.request_type}</td>
+            <td>${ticket.product_type}</td>
+            <td>${ticket.resolved_by}</td>
+            <td>${ticket.resolved_time}</td>
+            <td>${ticket.contact_service}</td>
+            <td>${ticket.tk_contact_fullname}</td>
+            <td>${ticket.tk_contact_email}</td>
+            <td>${ticket.tk_sap_company_full_name}</td>
+            <td>${ticket.tk_assignee_name_fullname}</td>
+            <td>${ticket.tk_contact_service_fullname}</td>
+            <td>${ticket.tk_callback_contact_ldap_ba}</td>
+            <td>${ticket.ba}</td>
+            <td>${ticket.tk_country_fullname}</td>
+            <td>${ticket.dim_regions_id}</td>
+            <td>${ticket.tk_company_id}</td>
+        </tr>
     </c:forEach>
 </table>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>

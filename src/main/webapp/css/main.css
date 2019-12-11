@@ -1,0 +1,99 @@
+#header {
+    background-color: #00a0f0;
+
+
+    z-index: 104;
+    padding:0;
+    overflow: auto;
+}
+
+#header .head {
+
+    *zoom: 1;
+    display: block;
+    margin: 0 auto;
+    max-width: 1334px;
+    position: relative;
+    width: 1334px;
+
+}
+
+#header .head #logo-wrapper {
+
+    display: block;
+    height: 110px;
+    margin-bottom: 38px;
+    margin-top: 38px;
+    position: relative;
+    width: 563px;
+
+}
+
+#header .head #logo-wrapper #logo {
+
+    background: url('../png/indekslogo.png') no-repeat;
+    display: block;
+    float: left;
+    height: 110px;
+    text-indent: -9999px;
+    width: 142px;
+}
+
+#header .head #logo-wrapper #claim {
+
+    background: url('../png/indeks.png') no-repeat;
+    bottom: 0;
+    display: block;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px;
+    width: 342px;
+
+}
+
+.footer-meta-wrapper.fixed.relative {
+
+    bottom: 0;
+    position: relative;
+    width: 100%;
+
+}
+
+.footer-meta-wrapper.fixed.absolute {
+
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+}
+
+#footer {
+
+    background-color: #00a0f0;
+    padding-bottom: 40px;
+    display: block;
+    height: 110px;
+}
+
+#metainfo {
+
+    *zoom: 1;
+    padding: 16px 0;
+
+}
+
+#metainfo .copyright {
+
+    color: #78879b;
+    float: left;
+
+}
+
+.divposition {
+    margin-left: 50px;
+}
+
+.tableposition {
+    max-width: 50%;
+}

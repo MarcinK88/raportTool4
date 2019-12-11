@@ -1,23 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 10619730
-  Date: 17.07.2019
-  Time: 11:00
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="menu.jsp"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>Raport tool</title>
+    <link href="css/font.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-logged user: ${sessionScope.get("loggedUser")}
-<ul>
-    <li><a href="/tickets">Tickets</a></li>
-    <li><a href="/importlist">Import file</a></li>
-    <li><a href="/charts">Generate charts</a></li>
-    <li><a href="/test">Test page</a></li>
-
-</ul>
+<div class="divposition">
+    <div class="row my-2">
+        <div class="list-group col-md-1 py-1">
+            <a href="/tickets" class="list-group-item list-group-item-action">Tickets</a>
+            <a href="/selectmonth" class="list-group-item list-group-item-action">Monthly report</a>
+            <a href="/ba" class="list-group-item list-group-item-action">BA report</a>
+            <a href="/importlist" class="list-group-item list-group-item-action">Import file</a>
+            <sec:authorize access="hasRole('ADMIN')">
+               <a href="/admin/editusers" class="list-group-item list-group-item-action">Manage users</a>
+            </sec:authorize>
+        </div>
+    </div>
+</div>
+<jsp:include page="footer_rel.jsp"/>
 </body>
 </html>
